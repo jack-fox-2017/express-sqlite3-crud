@@ -17,21 +17,21 @@ Structure table:
 * Groups: id type integer, name_of_group type string
 
 - Release 1 - Basic Routing for Contacts dan Groups
-Buatlah sejumlah route berikut dan tampilkan melalui view engine ejs
-----------------------------------------------------------------------
-METHOD | ROUTE                | KETERANGAN
-----------------------------------------------------------------------
-GET    | /contacts            | Menampilkan semua data contacts
-POST   | /contacts            | Menntuk input contact
-GET    | /contacts/edit/:id   | Menampilkan data contact spesifik untuk diubah
-POST   | /contacts/edit/:id   | Menerima data form untuk update contact
-GET    | /contacts/delete/:id | Menghapus data contact berdasarkan id
-GET    | /groups              | Menampilkan semua data groups
-POST   | /groups              | Menerima data form untuk input group
-GET    | /groups/edit/:id     | Menampilkan data group spesifik untuk diubah
-POST   | /groups/edit/:id     | Menerima data form untuk update group
-GET    | /groups/delete/:id   | Menghapus data group berdasarkan id
-
+Buatlah sejumlah route berikut dan tampilkan melalui view engine ejs<br />
+----------------------------------------------------------------------<br />
+METHOD | ROUTE                | KETERANGAN<br />
+----------------------------------------------------------------------<br />
+GET    | /contacts            | Menampilkan semua data contacts<br />
+POST   | /contacts            | Menntuk input contact<br />
+GET    | /contacts/edit/:id   | Menampilkan data contact spesifik untuk diubah<br />
+POST   | /contacts/edit/:id   | Menerima data form untuk update contact<br />
+GET    | /contacts/delete/:id | Menghapus data contact berdasarkan id<br />
+GET    | /groups              | Menampilkan semua data groups<br />
+POST   | /groups              | Menerima data form untuk input group<br />
+GET    | /groups/edit/:id     | Menampilkan data group spesifik untuk diubah<br />
+POST   | /groups/edit/:id     | Menerima data form untuk update group<br />
+GET    | /groups/delete/:id   | Menghapus data group berdasarkan id<br />
+<br />
 - Release 2
 Buat CRUD untuk addresses, profiles dengan routing yang rapih. 
 **/
