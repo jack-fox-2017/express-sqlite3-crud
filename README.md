@@ -22,7 +22,7 @@ Buatlah sejumlah route berikut dan tampilkan melalui view engine ejs<br />
 METHOD | ROUTE                | KETERANGAN<br />
 ----------------------------------------------------------------------<br />
 GET    | /contacts            | Menampilkan semua data contacts<br />
-POST   | /contacts            | Menntuk input contact<br />
+POST   | /contacts            | Menerima input contact<br />
 GET    | /contacts/edit/:id   | Menampilkan data contact spesifik untuk diubah<br />
 POST   | /contacts/edit/:id   | Menerima data form untuk update contact<br />
 GET    | /contacts/delete/:id | Menghapus data contact berdasarkan id<br />
