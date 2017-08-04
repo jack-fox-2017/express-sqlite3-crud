@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <h1>Table contacts</h1>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Group</th>
+        </tr>
+      </thead>
+      <tbody>
+          <% data.forEach(x=> {%>
+            <tr>
+              <td><%= x.id %></td>
+              <td><%= x.name_of_group %></td>
+              <td><a href="group/delete?id=<%= x.id %>">Delete</a></td>
+              <td><a href="group/edit?id=<%= x.id %>">Edit</a></td>
+            </tr>
+          <%})%>
+      </tbody>
+    </table>
+    <br>
+    <br>
+    <form  action="/group" method="post">
+      <input type="text" name="name_of_group" placeholder="Input nama group"><br>
+      <button type="submit">Save</button>
+    </form>
+    <br>
+    <a href="/"><button type="link" name="button">Back to Index</button></a>
+    <br>
+  </body>
+</html>
