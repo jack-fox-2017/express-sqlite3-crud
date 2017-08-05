@@ -4,6 +4,24 @@
   <head>
     <meta charset="utf-8">
     <title>CONTACTS</title>
+    <style>
+      table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      td,
+      th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+      }
+
+      tr:nth-child(even) {
+        background-color: #dddddd;
+      }
+    </style>
   </head>
 
   <body>
@@ -14,9 +32,11 @@
           <th>NAMA</th>
           <th>COMPANY</th>
           <th>PHONE</th>
-          <th>email</th>
+          <th>EMAIL</th>
+          <th>GROUP</th>
+          <th>ADDRESS</th>
         </tr>
-        <% dataContact.forEach( cont => { %>
+        <% data.forEach( cont => { %>
           <tr>
             <td>
               <%= cont.id %>
@@ -32,6 +52,13 @@
             </td>
             <td>
               <%= cont.email %>
+            </td>
+            <td>
+              <%= cont.name_of_group %>
+            </td>
+            <td>
+              <%= cont.alamat %>,
+                <%= cont.kodepos %>
             </td>
             <td><a href="/contacts/edit/<%= cont.id %>">EDIT</a></td>
             <td><a href="/contacts/delete/<%= cont.id %>">DELETE</a></td>
@@ -50,7 +77,13 @@
         <input type="text" name="email" placeholder="Insert Your E-mail Address"><br>
         <input type="submit" value="Submit">
       </form>
+      <br><br>
+      <a href="/">BACK</a>
     </div>
   </body>
+
+</html>
+</div>
+</body>
 
 </html>

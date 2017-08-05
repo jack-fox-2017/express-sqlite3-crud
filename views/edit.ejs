@@ -8,11 +8,11 @@
 
   <body>
     <h1>EDIT CONTACT</h1>
-    <form action="/contacts/edit/<%= cont[0].id %>" method="post">
-      <input type="text" name="nama" value="<%=cont[0].name%>"><br>
-      <input type="text" name="corp" value="<%= cont[0].company %>"><br>
-      <input type="text" name="phone" value="<%= cont[0].telp_number %>"><br>
-      <input type="text" name="email" value="<%= cont[0].email %>"><br>
+    <form action="/contacts/edit/<%= data[0].id %>" method="post">
+      <input type="text" name="nama" value="<%=data[0].name%>"><br>
+      <input type="text" name="corp" value="<%= data[0].company %>"><br>
+      <input type="text" name="phone" value="<%= data[0].telp_number %>"><br>
+      <input type="text" name="email" value="<%= data[0].email %>"><br>
       <input type="submit" value="Submit">
     </form>
   </body>
