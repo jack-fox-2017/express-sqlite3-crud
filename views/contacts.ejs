@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>form contacts</title>
+  </head>
+  <body>
+    <center>
+    <h1>Contacts</h1>
+    <div>
+    <center>
+      <center>
+        <table border="1">
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Company</th>
+            <th>Number Telp</th>
+            <th>Email</th>
+            <th>Action</th>
+          </tr>
+          <% data.forEach(d => { %>
+            <tr>
+              <td><%=d.id%></td>
+              <td><%=d.name%></td>
+              <td><%=d.company%></td>
+              <td><%=d.telp_number%></td>
+              <td><%=d.email%></td>
+              <td><a href="/contacts/edit/<%= d.id %>"><button type="button" name="button">Edit</button></a></td>
+              <td><a href="contacts/delete/<%= d.id %>"><button type="button" name="button">Delete</button></a></td>
+            </tr>
+          <%})%>
+        </table>
+      </center>
+    </div>
+    <center>
+      <form action="/contacts" method="post">
+        <label><b>Name</b></label>
+        <input type="text" name="name" placeholder="Input Your Name">
+        <label><b>Company</b></label>
+        <input type="text" name="company" placeholder="Input Your Company">
+        <label><b>No. Telp</b></label>
+        <input type="text" name="telp_number" placeholder="Input Your Number Telp">
+        <label><b>Email</b></label>
+        <input type="text" name="email" placeholder="Input Your Email">
+        <button type="submit" name="button">Submit</button>
+      </form>
+    </center>
+  </body>
+</html>
