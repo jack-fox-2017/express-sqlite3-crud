@@ -2,15 +2,24 @@ const express = require('express');
 const app = express()
 const bodyParser = require('body-parser')
 const ejs = require('ejs')
+app.set('view engine', 'ejs')
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
+app.use(express.static(__dirname + '/public'));
 
-app.set('view engine', 'ejs')
+//routing
+let index = require('./routes/index')
+let contacts = require('./routes/contacts')
+let groups = require('./routes/groups')
+let addresses = require('./routes/addresses')
+let profiles = require('./routes/profiles')
 
-app.get('/', (req, res) => {
-  res.render('index')
-})
+app.use('/', index)
+app.use('/contacts', contacts)
+app.use('/groups', groups)
+app.use('/addresses', addresses)
+app.use('/profiles', profiles)
 
 app.listen(3000, () => {
   console.log("Listenin on port 3000");

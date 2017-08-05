@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+body {font-family: 'Montserrat', sans-serif;}
+
+table {
+  border-collapse: collapse;
+  margin: 20px 0
+}
+
+table, th, td {
+  border: 1px solid black
+}
+
+th, td {
+  padding: 5px 10px
+}
+
+th {
+  background-color: rgba(0,0,0,0.2)
+}
+
+input {
+  padding: 5px 10px
+}
