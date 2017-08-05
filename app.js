@@ -14,6 +14,8 @@ app.get('/', function(req,res) {
   res.render('index')
 })
 
+//-----------CONTACTS-----------
+
 app.get('/contacts', (req,res) => {
   db.all(`SELECT * FROM Contacts`, (err, contact) => {
     if(!err) {
@@ -51,6 +53,48 @@ app.get('/contacts/delete/:id', (req,res) => {
   db.run(`DELETE FROM Contacts WHERE id=${req.params.id}`)
   res.redirect('/contacts')
 })
+
+//-----------GROUPS-----------
+
+app.get('/groups', (req,res) => {
+  db.all(`SELECT * FROM Groups`, (err, group) => {
+    if(!err) {
+      // console.log(contact);
+      res.render('groups', {grp: group})
+    }
+  })
+})
+
+app.post('/groups', (req,res) => {
+  db.run(`INSERT INTO Groups (name_of_group)
+          VALUES ('${req.body.name_of_group}')`)
+    // if(!err) {
+  res.redirect('/groups')
+    // }
+    // console.log('berhasil tambah data');
+})
+
+app.get('/groups/edit/:id', (req,res) => {
+  db.all(`SELECT * FROM Groups WHERE id = ${req.params.id}`, (err, group) => {
+    if(!err) {
+      res.render('edit-group', {grp: group})
+    }
+  })
+})
+
+app.post('/groups/edit/:id', (req,res) => {
+  db.run(`UPDATE Groups
+          SET name_of_group='${req.body.name_of_group}' WHERE id=${req.params.id}`)
+  res.redirect('/groups')
+})
+
+app.get('/groups/delete/:id', (req,res) => {
+  db.run(`DELETE FROM Groups WHERE id=${req.params.id}`)
+  res.redirect('/groups')
+})
+
+
+
 
 app.listen(3000, function() {
   console.log('I am listening port 3000');
