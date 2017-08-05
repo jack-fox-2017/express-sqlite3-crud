@@ -3,14 +3,16 @@
   <head>
     <meta charset="utf-8">
     <title>form contacts</title>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   </head>
   <body>
+    <div class="container">
     <center>
     <h1>Contacts</h1>
-    <div>
+    <div class="container">
     <center>
       <center>
-        <table border="1">
+        <table class="table table-hover">
           <tr>
             <th>ID</th>
             <th>Name</th>
@@ -26,8 +28,9 @@
               <td><%=d.company%></td>
               <td><%=d.telp_number%></td>
               <td><%=d.email%></td>
-              <td><a href="/contacts/edit/<%= d.id %>"><button type="button" name="button">Edit</button></a></td>
-              <td><a href="contacts/delete/<%= d.id %>"><button type="button" name="button">Delete</button></a></td>
+              <td><a href="/contacts/edit/<%= d.id %>"><button type="button" class="btn btn-primary btn-sm" name="button">Edit</button></a>
+              <a href="contacts/delete/<%= d.id %>"><button type="button" class="btn btn-primary btn-sm" name="button">Delete</button></a>
+              </td>
             </tr>
           <%})%>
         </table>
@@ -35,16 +38,22 @@
     </div>
     <center>
       <form action="/contacts" method="post">
-        <label><b>Name</b></label>
-        <input type="text" name="name" placeholder="Input Your Name">
-        <label><b>Company</b></label>
-        <input type="text" name="company" placeholder="Input Your Company">
-        <label><b>No. Telp</b></label>
-        <input type="text" name="telp_number" placeholder="Input Your Number Telp">
-        <label><b>Email</b></label>
-        <input type="text" name="email" placeholder="Input Your Email">
-        <button type="submit" name="button">Submit</button>
+        <div class="form-group">
+          <div class="container-fluid">
+          <label><b>Name</b></label>
+          <input type="text" class="form-control" name="name" placeholder="Input Your Name">
+          <label><b>Company</b></label>
+          <input type="text" class="form-control" name="company" placeholder="Input Your Company">
+          <label><b>No. Telp</b></label>
+          <input type="text" class="form-control" name="telp_number" placeholder="Input Your Number Telp">
+          <label><b>Email</b></label>
+          <input type="text" class="form-control" name="email" placeholder="Input Your Email">
+          <button type="submit" class="form-control" name="button">Submit</button>
+        </div>
+        </div>
       </form>
+      <a href="/">Home</a>
     </center>
+  </div>
   </body>
 </html>

@@ -1,36 +1,51 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>groups</title>
-  </head>
-  <body>
-    <center><h1>Groups</h1></center>
-    <div>
+
+<head>
+  <meta charset="utf-8">
+  <title>groups</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+
+<body>
+  <center>
+    <h1>Groups</h1></center>
+  <div class="container">
+    <tr>
+      <center>
+        <table class="table table-hover">
+          <th>ID</th>
+          <th>Groups Name</th>
+          <th>ACTION</th>
+    </tr>
+    <% data.forEach(d => { %>
       <tr>
-        <center>
-        <table border="1">
-        <th>ID</th>
-        <th>Groups Name</th>
-        <th>ACTION</th>
-      </tr>
-      <% data.forEach(d => { %>
-      <tr>
-        <td><%=d.id%></td>
-        <td><%=d.name_of_groups%></td>
-        <td><a href="/groups/edit/<%= d.id%>"><button type="button" name="button">Edit</button></a></td>
-        <td><a href="/groups/delete/<%= d.id%>"><button type="button" name="button">Delete</button></a></td>
+        <td>
+          <%=d.id%>
+        </td>
+        <td>
+          <%=d.name_of_groups%>
+        </td>
+        <td><a href="/groups/edit/<%= d.id%>"><button type="button" class="btn btn-primary btn-sm"  name="button">Edit</button></a>
+          <a href="/groups/delete/<%= d.id%>"><button type="button" class="btn btn-primary btn-sm" name="button">Delete</button></a>
+        </td>
       </tr>
       <% }) %>
-      </table>
-    </center>
-    </div>
-    <center>
-      <form action="/groups" method="post">
+        </table>
+        </center>
+  <center>
+    <form action="/groups" method="post">
+      <div class="form-group">
         <label>Groups Name</label>
-        <input type="text" name="name_of_groups" placeholder="Input Your Groups">
-        <button type="submit" name="button">Submit</button>
-      </form>
-    </center>
-  </body>
+        <input type="text" class="form-control" name="name_of_groups" placeholder="Input Your Groups">
+        <button type="submit" class="form-control" name="button">Submit</button>
+    </form>
+    <a href="/">Home</a>
+      </div>
+    </div>
+  </center>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</body>
+
 </html>
