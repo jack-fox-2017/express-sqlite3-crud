@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<body>
+  <h1>CONTAC</h1>
+  <table border="1">
+    <tr>
+      <th>ID</th>
+      <th>nama</th>
+      <th>company</th>
+      <th>phone number</th>
+      <th>email</th>
+    </tr>
+    <% data.forEach (d =>{%>
+      <tr>
+        <td>
+          <%= d.no %>
+        </td>
+        <td>
+          <%= d.name %>
+        </td>
+        <td>
+          <%= d.company %>
+        </td>
+        <td>
+          <%= d.phonenumber %>
+        </td>
+        <td>
+          <%= d.email %>
+        </td>
+        <td><a href="/contacs/edit/<%= d.no %>"><button type="button" name="button">Edit</button></a></td>
+        <td><a href="/contacs/delete/<%= d.no %>"><button type="button" name="button">Delete</button></a></td>
+      </tr>
+      <% }) %>
+  </table>
+  <br>
+  <left>
+    <form action="/contacs" method="post">
+      <label><b>name<b></label>
+      <input type="text" name="name" placeholder="please input your name">
+      <br>
+      <label><b>company<b></label>
+      <input type="text" name="company" placeholder="company name">
+      <br>
+      <label><b>phone number<b></label>
+      <input type="text" name="phonenumber" placeholder="please input your Phone number">
+      <br>
+      <label><b>email<b></label>
+      <input type="text" name="email" placeholder="please input your email">
+      <br>
+      <button type="submit" name="submit">Submit </button>
+    </form><br>
+  </left>
+  <br>
+  <a href="/">back to home</a>
+</body>
+</html>
