@@ -91,6 +91,40 @@ app.post('/group/edit', function(req,res){
   res.redirect(`/group`)
 })
 
+app.get('/profile', function(req,res){
+  db.all(`SELECT id,name FROM profile`, function(err,rows){
+    if(!err){
+      res.render('profile',{data: rows})
+    }
+  })
+})
+
+app.post('/profile', function(req,res){
+  //res.send(req.body)
+  db.run(`INSERT INTO profile(name,gender,born_date,telp_number,company,email) VALUES('${req.body.name}','${req.body.gender}','${req.body.year}-${req.body.month}-${req.body.day}','${req.body.telp_number}','${req.body.company}','${req.body.email}')`)
+  res.redirect('profile')
+})
+
+app.get('/profile/detail', function(req,res){
+  //res.send(req.query.id)
+  db.all(`SELECT * FROM profile JOIN addresses WHERE profile.id = addresses.id_profile AND profile.id = '${req.query.id}'`, function(err,rows){
+    if(!err){
+      //res.send(rows)
+      res.render('profile-detail',{data: rows})
+    }
+  })
+
+  // db.each(`SELECT * FROM profile WHERE id='${req.query.id}'`, function(err,rows){
+  //   if(!err){
+  //     res.render('profile-detail',{data: rows})
+  //   }
+  // })
+})
+
+app.post('/profile/detail', function(req,res){
+  db.run(`INSERT INTO addresses(id_profile,address) VALUES(${req.query.id},'${req.body.address}')`)
+  res.redirect(`/profile/detail?id=${req.query.id}`)
+})
 
 app.listen(3000, function(){
   console.log("Iam listen on port 3000");

@@ -14,6 +14,16 @@ function createTableGroup(){
   db.run(' CREATE TABLE IF NOT EXISTS groups (id INTEGER PRIMARY KEY AUTOINCREMENT, name_of_group VARCHAR(30))');
 }
 
+function createTableProfile(){
+  db.run('CREATE TABLE IF NOT EXISTS profile (id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR(30), gender VARCHAR(10), born_date DATE, telp_number VARCHAR(20), company VARCHAR(50), email VARCHAR(30))');
+}
+
+function createTableAddresses(){
+  db.run('CREATE TABLE IF NOT EXISTS addresses (id INTEGER PRIMARY KEY AUTOINCREMENT, id_profile INTEGER, address VARCHAR(255), FOREIGN KEY (id_profile) REFERENCES profile(id))')
+}
+
 //Create table if not exists
 createTableGroup()
 createTableContact()
+createTableProfile()
+createTableAddresses()

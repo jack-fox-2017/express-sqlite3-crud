@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Profile Detail</title>
+  </head>
+  <body>
+    <h1>Profile detail</h1>
+    <table>
+      <tbody>
+        <tr>
+          <td>Nama: </td>
+          <td><%=data[0].name%></td>
+        </tr>
+        <tr>
+          <td>Kelamin: </td>
+          <td><%=data[0].gender%></td>
+        </tr>
+        <tr>
+          <td>Tanggal Lahir: </td>
+          <td><%=data[0].born_date%></td>
+        </tr>
+        <tr>
+          <td>Telepon: </td>
+          <td><%=data[0].telp_number%></td>
+        </tr>
+        <tr>
+          <td>Perusahan: </td>
+          <td><%=data[0].company%></td>
+        </tr>
+        <tr>
+          <td>Email: </td>
+          <td><%=data[0].email%></td>
+        </tr>
+        <% var i = 1
+        data.forEach(x=>{ %>
+          <tr>
+            <td>Address <%= i %>: </td>
+            <td><%=x.address%></td>
+          </tr>
+        <% i++ }) %>
+      </tbody>
+    </table>
+  </body>
+  <br>
+  <form action="/profile/detail?id=<%=data.id%>" method="post">
+    <input type="text" name="address" value=""><br>
+    <button type="submit">Save Address</button>
+  </form>
+  <br>
+  <br>
+  <a href="/profile"><button type="button" name="button">Back to Profile</button></a>
+</html>

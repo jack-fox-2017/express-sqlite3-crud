@@ -1,0 +1,7 @@
+CREATE TABLE `addresses` (
+	`id`	INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,
+	`id_contact`	INTEGER,
+	`address`	TEXT,
+	FOREIGN KEY (id_contact) REFERENCES contact(id)
+	
+);
