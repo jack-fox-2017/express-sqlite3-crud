@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    page groups.
+    <br><br>
+    <form action="/groups" method="post">
+      <input type="text" name="name" placeholder="Name of Group">
+      <button type="submit" name="submit">Add</button>
+    </form>
+    <br><br>
+
+    <table border="1">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name of Group</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% data.forEach(d => { %>
+        <tr>
+          <td><%= d.id %></td>
+          <td><%= d.name %></td>
+          <td><a href="/groups/delete/<%= d.id %>">DELETE</a></td>
+          <td><a href="/groups/edit/<%= d.id %>">EDIT</a></td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+    <br><br>
+
+    <a href="/">Back</a>
+  </body>
+</html>
