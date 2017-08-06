@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Edit Data Profiles</title>
+  </head>
+  <body>
+    <center>
+      <h1>EDIT FORM</h1>
+      <form action="/home/profiles/edit/<%=data_profiles[0].id%>" method = "POST">
+      <br>
+      Username:<br>
+      <input type="text" name="username" value="<%=data_profiles[0].username%>">
+      <br><br>
+      Password:<br>
+      <input type="text" name="password" value="<%=data_profiles[0].password%>">
+      <br><br>
+      <input type="submit" value="Submit">
+    </form>
+  </center>
+  </body>
+</html>
