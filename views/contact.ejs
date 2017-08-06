@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Contacts</title>
+  </head>
+  <style>
+        table, th, td {
+          border: 1px solid black;
+          border-collapse: collapse;
+        }
+        th, td {
+            padding: 5px;
+            text-align: left;
+        }
+  </style>
+  <body>
+    <h1>===Contacts===</h1>
+    <h2>
+        <table style="width:50%">
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Company</th>
+            <th>Phone Number</th>
+            <th>Email</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+          <%var i = 1%>
+          <%dataC.forEach(d => {%>
+            <tr>
+            <td><%=i%><%i+=1%></td>
+            <td><%=d.name%></td>
+            <td><%=d.company%></td>
+            <td><%=d.telp_number%></td>
+            <td><%=d.email%></td>
+            <td> <a href="/contacts/edit/<%=d.id%>">Edit</a> </td>
+            <td> <a href="/contacts/delete/<%=d.id%>">Delete</a> </td>
+          <%})%>
+          </tr>
+</table>
+    </h2>
+    <h3>Add Contact</h3>
+    <h4>
+      <form action="/contacts" method="post">
+          Name:<br>
+          <input type="text" name="name" placeholder="name"><br>
+          Company:<br>
+          <input type="text" name="company" placeholder="company"> <br>
+          Phone Number:<br>
+          <input type="text" name="telp_number" placeholder="phone number"><br>
+          Email:<br>
+          <input type="text" name="email" placeholder="email"><br>
+          <br>
+          <button type="submit">Add new contact</button>
+        </form>
+    </h4>
+    <a href="/">Home</a>
+  </body>
+</html>
