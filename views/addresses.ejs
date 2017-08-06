@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Addresses</title>
+  </head>
+  <body>
+    <h1>Addresses List View</h1>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Street</th>
+          <th>City</th>
+          <th>Province</th>
+          <th>Zip Code</th>
+          <th>Options</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%adr.forEach(a=> { %>
+          <tr>
+            <td><%= a.id %></td>
+            <td><%= a.street %></td>
+            <td><%= a.city %></td>
+            <td><%= a.province %></td>
+            <td><%= a.zip %></td>
+            <td><a href="/addresses/edit/<%=a.id%>">Edit</a> | <a href="/addresses/delete/<%=a.id%>">Delete</a></td>
+          </tr>
+        <% })%>
+      </tbody>
+    </table>
+    <br><br>
+    <form action="/addresses" method="post">
+      <fieldset>
+        <legend>Address Information</legend>
+        <input type="text" name="street" placeholder="ketik nama jalan"><br>
+        <input type="text" name="city" placeholder="ketik nama kota"><br>
+        <input type="text" name="province" placeholder="ketik nama provinsi"><br>
+        <input type="text" name="zip" placeholder="ketik kode pos"><br>
+        <input type="submit" value="Add">
+      </fieldset>
+    </form>
+    <br><br>
+    <a href="/">Home</a>
+    <a href="/contacts">Contacts</a>
+    <a href="/groups">Groups</a>
+    <a href="/addresses">Addresses</a>
+    <a href="/profiles">Profiles</a>
+  </body>
+</html>

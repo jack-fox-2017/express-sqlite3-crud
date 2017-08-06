@@ -93,8 +93,46 @@ app.get('/groups/delete/:id', (req,res) => {
   res.redirect('/groups')
 })
 
+//-----------ADDRESSES-----------
+app.get('/addresses', (req,res) => {
+  db.all(`SELECT * FROM Addresses`, (err, address) => {
+    if(!err) {
+      // console.log(contact);
+      res.render('addresses', {adr: address})
+    }
+  })
+})
 
+app.post('/addresses', (req,res) => {
+  db.run(`INSERT INTO Addresses (street, city, province, zip)
+          VALUES ('${req.body.street}','${req.body.city}','${req.body.province}','${req.body.zip}')`)
+    // if(!err) {
+  res.redirect('/addresses')
+    // }
+    // console.log('berhasil tambah data');
+})
 
+app.get('/addresses/edit/:id', (req,res) => {
+  db.all(`SELECT * FROM Addresses WHERE id = ${req.params.id}`, (err, address) => {
+    if(!err) {
+      res.render('edit-address', {adr: address})
+    }
+  })
+})
+
+app.post('/addresses/edit/:id', (req,res) => {
+  db.run(`UPDATE Addresses
+          SET street='${req.body.street}',city='${req.body.city}',province='${req.body.province}',zip='${req.body.zip}'
+          WHERE id=${req.params.id}`)
+  res.redirect('/addresses')
+})
+
+app.get('/addresses/delete/:id', (req,res) => {
+  db.run(`DELETE FROM Addresses WHERE id=${req.params.id}`)
+  res.redirect('/addresses')
+})
+
+//-----------PROFILES-----------
 
 app.listen(3000, function() {
   console.log('I am listening port 3000');

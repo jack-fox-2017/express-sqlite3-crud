@@ -13,6 +13,20 @@ function createTable2() {
     console.log('Groups table has been created');
 }
 
+function createTable3() {
+  db.run(`CREATE TABLE IF NOT EXISTS
+    Addresses (id INTEGER PRIMARY KEY AUTOINCREMENT, street TEXT, city TEXT, province TEXT, zip TEXT)`);
+    console.log('Addresses table has been created');
+}
+
+function createTable4() {
+  db.run(`CREATE TABLE IF NOT EXISTS
+    Profiles (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT, password TEXT)`);
+    console.log('Profiles table has been created');
+}
+
 
 createTable1()
 createTable2()
+createTable3()
+createTable4()
