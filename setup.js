@@ -13,7 +13,7 @@ function createTableGroups() {
   console.log('Groups Created');
 }
 
-function createtableAddress() {
+function createTableAddress() {
   db.run(`CREATE TABLE IF NOT EXISTS address(id integer primary key autoincrement, street text, city text, zip_code text)`);
   console.log('Address Created');
 }
@@ -25,5 +25,5 @@ function createTableProfiles() {
 
 createTableContacts()
 createTableGroups()
-createtableAddress()
+createTableAddress()
 createTableProfiles()
