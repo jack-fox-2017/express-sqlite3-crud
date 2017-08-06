@@ -94,6 +94,7 @@ app.get('/groups/delete/:id', (req,res) => {
 })
 
 //-----------ADDRESSES-----------
+
 app.get('/addresses', (req,res) => {
   db.all(`SELECT * FROM Addresses`, (err, address) => {
     if(!err) {
@@ -133,6 +134,44 @@ app.get('/addresses/delete/:id', (req,res) => {
 })
 
 //-----------PROFILES-----------
+
+app.get('/profiles', (req,res) => {
+  db.all(`SELECT * FROM Profiles`, (err, profile) => {
+    if(!err) {
+      // console.log(contact);
+      res.render('profiles', {prf: profile})
+    }
+  })
+})
+
+app.post('/profiles', (req,res) => {
+  db.run(`INSERT INTO Profiles (username, password)
+          VALUES ('${req.body.username}','${req.body.password}')`)
+    // if(!err) {
+  res.redirect('/profiles')
+    // }
+    // console.log('berhasil tambah data');
+})
+
+app.get('/profiles/edit/:id', (req,res) => {
+  db.all(`SELECT * FROM Profiles WHERE id = ${req.params.id}`, (err, profile) => {
+    if(!err) {
+      res.render('edit-profile', {prf: profile})
+    }
+  })
+})
+
+app.post('/profiles/edit/:id', (req,res) => {
+  db.run(`UPDATE Profiles
+          SET username='${req.body.username}',password='${req.body.password}'
+          WHERE id=${req.params.id}`)
+  res.redirect('/profiles')
+})
+
+app.get('/profiles/delete/:id', (req,res) => {
+  db.run(`DELETE FROM Profiles WHERE id=${req.params.id}`)
+  res.redirect('/profiles')
+})
 
 app.listen(3000, function() {
   console.log('I am listening port 3000');
