@@ -33,5 +33,19 @@ POST   | /groups/edit/:id     | Menerima data form untuk update group<br />
 GET    | /groups/delete/:id   | Menghapus data group berdasarkan id<br />
 <br />
 - Release 2
-Buat CRUD untuk addresses, profiles dengan routing yang rapih. 
+Buat CRUD untuk addresses, profiles dengan routing yang rapih.
+----------------------------------------------------------------------<br />
+METHOD | ROUTE                | KETERANGAN<br />
+----------------------------------------------------------------------<br />
+GET    | /profiles            | Menampilkan semua data contacts<br />
+POST   | /profiles            | Menerima input contact<br />
+GET    | /profiles/edit/:id   | Menampilkan data contact spesifik untuk diubah<br />
+POST   | /profiles/edit/:id   | Menerima data form untuk update contact<br />
+GET    | /profiles/delete/:id | Menghapus data contact berdasarkan id<br />
+GET    | /addresses              | Menampilkan semua data groups<br />
+POST   | /addresses              | Menerima data form untuk input group<br />
+GET    | /addresses/edit/:id     | Menampilkan data group spesifik untuk diubah<br />
+POST   | /addresses/edit/:id     | Menerima data form untuk update group<br />
+GET    | /addresses/delete/:id   | Menghapus data group berdasarkan id<br />
+<br />
 **/

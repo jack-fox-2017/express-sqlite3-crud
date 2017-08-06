@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>edit profile</title>
+  </head>
+  <body>
+    <h1>===Edit Profiles===</h1>
+    <h2>
+      <%dataP.forEach(function(d){ %>
+      <form action="/profiles/edit/<%=d.id%>" method="post">
+        Street:<br>
+        <input type="text" name="street" value="<%=d.street%>"><br>
+        City:<br>
+        <input type="text" name="city" value="<%=d.city%>"> <br>
+        Zip Code:<br>
+        <input type="text" name="zip_code" value="<%=d.zip_code%>"><br>
+        <br>
+        <button type="submit" name="button">Submit</button> <br>
+      </form>
+    </h2>
+    <%})%>
+  </body>
+</html>

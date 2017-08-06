@@ -9,6 +9,7 @@ app.set('view engine', 'ejs');// npm view ejs mirip html
 const sql = require('sqlite3').verbose();
 var db = new sql.Database('./db/data.db'); //berbasis file. kitaharus buat file
 //=============================================================Routing
+//=============================================================Contact
 
 app.get('/', function(req,res){
   res.render('index')
@@ -64,7 +65,6 @@ app.get('/groups/edit/:id', function(req, res){
     })
   })
 
-
 app.post('/groups/edit/:id', function(req,res){
   db.run(`UPDATE Groups SET name_of_group = '${req.body.group}' WHERE id = ${req.params.id}`)
   res.redirect('/groups')
@@ -75,5 +75,68 @@ app.get('/groups/delete/:id', function(req, res){
   res.redirect('/groups')
 })
 
+//=============================================================Profiles
+app.get('/profiles', function(req,res){
+  db.all(`SELECT * FROM Profiles`, function(err,rows){
+    if (!err) {
+      res.render('profile', {dataP:rows})
+    }
+  })
+})
 
-app.listen(3000)
+app.post('/profiles', function(req, res){
+  db.all(`INSERT INTO Profiles (street, city, zip_code)
+  VALUES("${req.body.street}","${req.body.city}","${req.body.zip_code}")`)
+  res.redirect('/profiles')
+})
+
+app.get('/profiles/edit/:id', function(req,res){
+  db.all(`SELECT * FROM Profiles WHERE id = "${req.params.id}"`, function(err,rows){
+    if(!err){
+      res.render('edit_profile', {dataP:rows})
+    }
+  })
+})
+
+app.post('/profiles/edit/:id', function(req,res){
+  db.run(`UPDATE Profiles SET street = "${req.body.street}" , city = "${req.body.city}", zip_code = "${req.body.zip_code}" WHERE id = "${req.params.id}"`)
+  res.redirect('/profiles')
+})
+
+app.get('/profiles/delete/:id', function(req,res){
+  db.run(`DELETE FROM Profiles WHERE id = "${req.params.id}"`)
+  res.redirect('/profiles')
+})
+//=============================================================Addresses
+app.get('/addresses', function(req,res){
+  db.all(`SELECT * FROM Addresses`, function(err,rows){
+    if (!err) {
+      res.render('address', {dataA:rows})
+    }
+  })
+
+})
+app.post('/addresses', function(req,res){
+  db.run(`INSERT INTO Addresses (name,telp_number,email)
+  VALUES("${req.body.name}", "${req.body.telp_number}","${req.body.email}")`)
+  res.redirect('/addresses')
+})
+
+app.get('/addresses/edit/:id', function(req, res){
+  db.all(`SELECT * FROM Addresses WHERE id = "${req.params.id}"`, function(err,rows){
+    res.render('edit_address', {dataA:rows})
+  })
+})
+
+app.post('/addresses/edit/:id', function(req,res){
+  db.run(`UPDATE Addresses SET name = "${req.body.name}", telp_number = "${req.body.telp_number}", email = "${req.body.email}" WHERE id = "${req.params.id}"`)
+  res.redirect('/addresses')
+})
+
+app.get('/addresses/delete/:id', function(req,res){
+  db.run(`DELETE FROM Addresses WHERE id = "${req.params.id}"`)
+  res.redirect('/addresses')
+})
+
+
+app.listen(3080)

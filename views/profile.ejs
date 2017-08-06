@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Profiles</title>
+  </head>
+  <style>
+        table, th, td {
+          border: 1px solid black;
+          border-collapse: collapse;
+        }
+        th, td {
+            padding: 5px;
+            text-align: left;
+        }
+  </style>
+  <body>
+    <h1>===Profile===</h1>
+    <h2>
+        <table style="width:50%">
+          <tr>
+            <th>ID</th>
+            <th>Street</th>
+            <th>City</th>
+            <th>Zip Code</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+          <%var i = 1%>
+          <%dataP.forEach(d => {%>
+            <tr>
+            <td><%=i%><%i+=1%></td>
+            <td><%=d.street%></td>
+            <td><%=d.city%></td>
+            <td><%=d.zip_code%></td>
+            <td> <a href="/profiles/edit/<%=d.id%>">Edit</a> </td>
+            <td> <a href="/profiles/delete/<%=d.id%>">Delete</a> </td>
+          <%})%>
+          </tr>
+</table>
+    </h2>
+    <h3>Add Profile</h3>
+    <h4>
+      <form action="/profiles" method="post">
+          Street:<br>
+          <input type="text" name="street" placeholder="street"><br>
+          City:<br>
+          <input type="text" name="city" placeholder="city"> <br>
+          zip_code:<br>
+          <input type="text" name="zip_code" placeholder="zip Code"><br>
+          <br>
+          <button type="submit">Add new profile</button>
+        </form>
+    </h4>
+    <a href="/">Home</a>
+  </body>
+</html>
