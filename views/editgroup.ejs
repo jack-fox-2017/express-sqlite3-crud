@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Edit Group</title>
+</head>
+<body>
+  <h1>EDIT GROUP<h1>
+      <form action="/group/edit/<%=data[0].no%>" method="post">
+          <label><b>group name<b></label>
+          <input type="text" name="namegroup" value="<%= data[0].namegroup%>">
+        <button type="submit" name="submit">update</button>
+      </form>
+      <a href="/group">cancel</a>
+  </body>
+</html>
