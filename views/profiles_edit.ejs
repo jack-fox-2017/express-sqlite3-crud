@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <form action="/profiles/edit/<%= data[0].id %>" method="post">
+      <input type="text" name="username" placeholder="Username" value="<%= data[0].username %>">
+      <input type="text" name="password" placeholder="Password" value="<%= data[0].password %>">
+      <select name="contactId">
+        <% data2.forEach(d => { %>
+        <option value="<%= d.id %>"><%= d.name %></option>
+        <% }) %>
+      </select>
+      <button type="submit" name="submit">Submit</button>
+    </form>
+  </body>
+</html>
