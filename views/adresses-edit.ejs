@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Edit Form</title>
+  </head>
+  <body>
+    <center>
+    <h1>EDIT FORM</h1>
+    <form action="/home/adresses/edit/<%=data_adresses[0].id%>" method = "POST">
+      <br>
+      Jalan :<br>
+      <input type="text" name="jalan" value= "<%=data_adresses[0].jalan%>" >
+      <br>
+      Kota :<br>
+      <input type="text" name="kota" value= "<%=data_adresses[0].kota%>" >
+      <br>
+      Provinsi :<br>
+      <input type="text" name="provinsi" value= "<%=data_adresses[0].provinsi%>" >
+      <br><br>
+
+      <input type="submit" value="Submit">
+    </form>
+  </center>
+
+  </body>
+</html>

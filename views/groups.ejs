@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>DATA GROUPS</title>
+  </head>
+  <body>
+    <center>
+      <br>
+      <h1>DATA GROUPS</h1>
+    <a href = "/home/groups/add"> <button type="button" name="buttons">Tambah Group</button></a><br><br>
+    <table border = "1">
+      <tr>
+        <th>ID</th>
+        <th>Groups</th>
+        <th>Edit</th>
+        <th>Hapus</th>
+      </tr>
+      <%data_groups.forEach(dataGrp => {%>
+      <tr>
+        <td><%=dataGrp.id%></td>
+        <td><%=dataGrp.groups%></td>
+        <td><a href="/home/groups/edit/<%=dataGrp.id%>"> <button type="button" name="buttons">Ganti</button></a></td>
+        <td><a href="/home/groups/delete/<%=dataGrp.id%>"> <button type="button" name="buttons">Hapus</button></a></td>
+      </tr>
+      <%})%>
+    </table>
+  </center>
+  </body>
+</html>
