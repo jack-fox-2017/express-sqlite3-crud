@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Edit Address</title>
+  </head>
+  <body>
+    <h1>Edit Address Information</h1>
+    <br><br>
+    <%adr.forEach(a=> { %>
+    <form action="/addresses/edit/<%=a.id%>" method="post">
+      <fieldset>
+        <legend>Address Information</legend>
+        <input type="text" name="street" value="<%= a.street %>"><br>
+        <input type="text" name="city" value="<%= a.city %>"><br>
+        <input type="text" name="province" value="<%= a.province %>"><br>
+        <input type="text" name="zip" value="<%= a.zip %>"><br>
+        <input type="submit" value="Update">
+      </fieldset>
+    </form>
+    <% }) %>
+
+    <br><br>
+    <a href="/">Home</a>
+    <a href="/contacts">Contacts</a>
+    <a href="/groups">Groups</a>
+    <a href="/addresses">Addresses</a>
+    <a href="/profiles">Profiles</a>
+  </body>
+</html>
