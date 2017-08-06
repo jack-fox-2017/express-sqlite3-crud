@@ -1,0 +1,26 @@
+{
+  "users":
+  [
+    {
+      "username" : "hactive8",
+      "password" : "hacktive8",
+      "email" : "hacktive8@gmail.com"
+    },
+    {
+      "username" : "hactive8",
+      "password" : "hacktive8",
+      "email" : "hacktive8@gmail.com"
+    }
+  ],
+  "cities":
+  [
+    {
+      "nama" : "jakarta",
+      "provinsi" : "DKI jakarta"
+    },
+    {
+      "nama": "Bandung",
+      "provinsi":"jawa barat"
+    }
+  ]
+}

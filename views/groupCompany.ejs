@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h2>TAMPILAN GROUP</h2>
+    <form class="" action="/groups" method="post">
+      <input type="text" name="name" placeholder="nama groups">
+      <button type="submit" name="submit">tambah</button>
+    </form><br>
+    <table border="2">
+      <tr>
+        <th>ID</th>
+        <th>NAME GROUP</th>
+        <th colspan="2">ACTION</th>
+      </tr>
+
+      <% data.forEach(d => { %>
+        <tr>
+          <td><%= d.id %></td>
+          <td><%= d.name %></td>
+          <td>
+            <a href="/groups/edit/<%= d.id %>">Edit</a>
+          </td>
+          <td>
+            <a href="/groups/delete/<%= d.id %>">Delete</a>
+          </td>
+        </tr>
+      <% }) %>
+    </table><br>
+    <a href="/">INDEX</a>
+
+  </body>
+</html>
