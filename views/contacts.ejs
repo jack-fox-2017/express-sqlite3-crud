@@ -5,6 +5,39 @@
     <title>Contacts</title>
   </head>
   <body>
-    
+    <h1>Contacts</h1>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Compnay</th>
+          <th>Phone No.</th>
+          <th>E-mail</th>
+          <th colspan="2">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% data.forEach(d =>{ %>
+        <tr>
+          <td><%= d.id %></th>
+          <td><%= d.name %></th>
+          <td><%= d.company %></th>
+          <td><%= d.telp_number %></th>
+          <td><%= d.email %></th>
+          <td><a href="/contacts/edit/<%= d.id %>">Edit</a></td>
+          <td><a href="/contacts/del/<%= d.id %>">Delete</a></td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+    <br><br><br>
+    <form action="/contacts" method="post">
+      <input type="text" name="name" placeholder="Name"><br>
+      <input type="text" name="company" placeholder="Company"><br>
+      <input type="text" name="telp_number" placeholder="Phone Number"><br>
+      <input type="text" name="email" placeholder="Email"><br><br>
+      <input type="submit" value="Submit">
+    </form>
   </body>
 </html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Edit group</title>
+  </head>
+  <body>
+    <h1>Edit group</h1>
+    <% let d = data[0] %>
+    <form action="/groups/edit/<%= d.id %>" method="post">
+      <input type="text" name="name_of_group" placeholder="name of group" value="<%= d.name_of_group %>"><br>
+      <input type="submit" value="Submit">
+    </form>
+  </body>
+</html>
