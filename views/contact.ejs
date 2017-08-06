@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Contacts</h1>
+    <table border="1px">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Company</th>
+        <th>Phone Number</th>
+        <th>Email</th>
+        <th>Action</th>
+      </tr>
+      <% data.forEach(d => { %>
+        <tr>
+          <td><%= d.id %></td>
+          <td><%= d.name %></td>
+          <td><%= d.company %></td>
+          <td><%= d.telp_number %></td>
+          <td><%= d.email %></td>
+          <td><a href="/contact/edit-contact/<%= d.id%>"><button type="button" name="button">Edit</button></a></td>
+          <td><a href="/contact/delete/<%= d.id%>"><button type="button" name="button">Delete</button></a></td>
+        </tr>
+      <% }) %>
+    </table>
+    <br>
+    <form action="/contact" method="post">
+      <input type="text" name="name" placeholder="Name"><br>
+      <input type="text" name="company" placeholder="Company"><br>
+      <input type="text" name="telp_number" placeholder="Phone Number"><br>
+      <input type="text" name="email" placeholder="Email"><br><br>
+      <button type="submit" name="submit">SUBMIT</button>
+    </form><br>
+  </body>
+</html>

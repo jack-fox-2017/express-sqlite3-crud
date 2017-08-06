@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+  <form action="/address/edit-address/<%= data[0].id%>" method="post">
+    <input type="text" name="group_name" value="<%= data[0].group_name %>">
+    <input type="text" name="city" value="<%= data[0].city %>">
+    <input type="text" name="province" value="<%= data[0].province %>">
+    <input type="text" name="state" value="<%= data[0].state %>">
+    <input type="text" name="zipcode" value="<%= data[0].zipcode %>">
+    <button type="submit" name="submit">Submit</button>
+  </form>
+  </body>
+</html>

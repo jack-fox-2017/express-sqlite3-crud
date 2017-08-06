@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <form action="/profile/edit-profile/<%= data[0].id%>" method="post">
+      <input type="text" name="username" value="<%= data[0].username%>">
+      <input type="text" name="password" value="<%= data[0].password%>">
+      <button type="submit" name="submit">Submit</button>
+    </form>
+  </body>
+</html>
