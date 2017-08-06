@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Edit Profile</title>
+  </head>
+  <body>
+    <h1>Edit Profile</h1>
+   <br><br>
+   <%data.forEach(z=> { %>
+   <form action="/profile/edit/<%=z.id%>" method="post">
+     <fieldset>
+       <input type="text" name="username" value="<%= z.usia %>"><br>
+       <input type="text" name="password" value="<%= z.pendidikan %>"><br>
+       <input type="text" name="password" value="<%= z.pengalaman %>"><br>
+      <button type="submit">save</button>
+     </fieldset>
+   </form>
+   <% }) %>
+   <br><br>
+   <a href="/">Home</a>
+ </body>
+</html>

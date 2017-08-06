@@ -33,5 +33,5 @@ POST   | /groups/edit/:id     | Menerima data form untuk update group<br />
 GET    | /groups/delete/:id   | Menghapus data group berdasarkan id<br />
 <br />
 - Release 2
-Buat CRUD untuk addresses, profiles dengan routing yang rapih. 
+Buat CRUD untuk addresses, profiles dengan routing yang rapih.
 **/

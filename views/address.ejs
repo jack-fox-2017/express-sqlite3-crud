@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Addresses</title>
+  </head>
+  <body>
+    <h1>Addresses Information</h1>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Jalan</th>
+          <th>Kota</th>
+          <th>Provinsi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%data.forEach(z=> { %>
+          <tr>
+            <td><%= z.id %></td>
+            <td><%= z.jalan %></td>
+            <td><%= z.kota %></td>
+            <td><%= z.provinsi %></td>
+            <td><a href="/address/edit/<%=z.id%>">Edit</a></td>
+            <td><a href="/address/delete/<%=z.id%>">Delete</a></td>
+          </tr>
+        <% })%>
+      </tbody>
+    </table>
+    <br><br>
+    <form action="/address" method="post">
+      <fieldset>
+        <input type="text" name="jalan" placeholder="Input nama jalan"><br>
+        <input type="text" name="kota" placeholder="Input nama kota"><br>
+        <input type="text" name="provinsi" placeholder="Input nama provinsi"><br>
+        <button type="submit">save</button>
+      </fieldset>
+    </form>
+    <br><br>
+    <a href="/">Home</a>
+  </body>
+</html>
