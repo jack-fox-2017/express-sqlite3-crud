@@ -13,6 +13,7 @@
     <table>
       <thead>
         <tr>
+          <th>Name</th>
           <th>Id</th>
           <th>Username</th>
           <th>Password</th>
@@ -21,6 +22,7 @@
       <tbody>
         <% data.forEach(item => { %>
           <tr>
+            <td><%= item.contact_name %></td>
             <td><%= item.id %></td>
             <td><%= item.username %></td>
             <td><%= item.password %></td>
@@ -34,6 +36,13 @@
     <form action="/profiles" method="post">
       <input type="text" name="username" placeholder="Username">
       <input type="password" name="password" placeholder="Password">
+
+      <select name="contact_id">
+        <option value="" selected>Contact Name</option>
+        <% contacts.forEach(item => { %>
+          <option value=<%= item.id %>><%= item.name %></option>
+        <% }) %>
+      </select>
 
       <input type="submit" value="Submit">
     </form>

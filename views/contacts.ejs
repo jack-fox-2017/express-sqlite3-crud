@@ -9,7 +9,7 @@
     <marquee direction="right">
       <h1><a href="/">Contacts</a></h1>
     </marquee>
-    
+
     <table>
       <thead>
         <tr>
@@ -18,7 +18,7 @@
           <th>Company</th>
           <th>Phone Number</th>
           <th>Email</th>
-          <!--<th>Groups</th>-->
+          <th>Groups</th>
         </tr>
       </thead>
       <tbody>
@@ -29,7 +29,7 @@
             <td><%= item.company %></td>
             <td><%= item.telp_number %></td>
             <td><%= item.email %></td>
-            <!--<td><%= %></td>-->
+            <td><%= %></td>
             <td><a href="/contacts/edit/<%= item.id %>">Edit</a></td>
             <td><a href="/contacts/delete/<%= item.id %>">Delete</a></td>
           </tr>
@@ -43,13 +43,12 @@
       <input type="text" name="telp_number" placeholder="Phone Number">
       <input type="text" name="email" placeholder="Email">
 
-      <!-- <select name="group_id">
-        <option value="" selected>None</option>
-        <% groups.forEach(item => { %>
-          <option value=<%= item.id %>><%= item.name_of_group %></option>
-        <% }) %>
-      </select> -->
-
+      <% groups.forEach(item => { %>
+        <label>
+          <input type="checkbox" value=<%= item.id %>>
+          <%= item.name_of_group %>
+        </label>
+      <% }) %>
 
       <input type="submit" value="Submit">
     </form>

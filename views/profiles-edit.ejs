@@ -6,6 +6,9 @@
     <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
   <body>
+    <%= JSON.stringify(data) %>
+    <br/>
+    <%= JSON.stringify(contacts) %>
     <% let item = data[0] %>
     <marquee direction="right">
       <h1><a href="/">Edit Profile: <%= item.username %></a></h1>
@@ -14,10 +17,12 @@
     <form action="/profiles/edit/<%= item.id %>" method="post">
       <input type="text" name="username" placeholder="Username" value="<%= item.username %>">
       <input type="password" name="password" placeholder="Password" value="<%= item.password %>">
-      <!--<select name="group_id">
-        <option value="" selected>None</option>
-        <option value="">tess</option>
-      </select>-->
+      <select name="contact_id">
+        <option value="">Contact Name</option>
+        <% contacts.forEach(item2 => { %>
+          <option value=<%= item2.id %> <%= item.contact_id == item2.id ? 'selected' : '' %> ><%= item2.name %></option>
+        <% }) %>
+      </select>
 
       <input type="submit" value="Submit">
     </form>

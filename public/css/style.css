@@ -18,6 +18,12 @@ th {
   background-color: rgba(0,0,0,0.2)
 }
 
-input {
-  padding: 5px 10px
+input, select {
+  padding: 5px 10px;
+  display: block;
+  margin: 5px 0;
+}
+
+input[type="checkbox"] {
+	display: inline
 }

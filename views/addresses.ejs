@@ -13,6 +13,7 @@
     <table>
       <thead>
         <tr>
+          <th>Name</th>
           <th>Id</th>
           <th>Street</th>
           <th>City</th>
@@ -23,6 +24,7 @@
       <tbody>
         <% data.forEach(item => { %>
           <tr>
+            <td><%= item.contact_name %></td>
             <td><%= item.id %></td>
             <td><%= item.street %></td>
             <td><%= item.city %></td>
@@ -40,6 +42,13 @@
       <input type="text" name="city" placeholder="City">
       <input type="text" name="province" placeholder="Province">
       <input type="text" name="zip" placeholder="Zip">
+
+      <select name="contact_id">
+        <option value="" selected>Contact Name</option>
+        <% contacts.forEach(item2 => { %>
+          <option value=<%= item2.id %>><%= item2.name %></option>
+        <% }) %>
+      </select>
 
       <input type="submit" value="Submit">
     </form>
