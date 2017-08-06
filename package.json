@@ -1,0 +1,29 @@
+{
+  "name": "express-sqlite3-crud",
+  "version": "1.0.0",
+  "description": "express-crud",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jack-fox-2017/express-sqlite3-crud.git"
+  },
+  "keywords": [
+    "msr"
+  ],
+  "author": "msrabbani",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jack-fox-2017/express-sqlite3-crud/issues"
+  },
+  "homepage": "https://github.com/jack-fox-2017/express-sqlite3-crud#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "bulma": "^0.5.0",
+    "ejs": "^2.5.7",
+    "express": "^4.15.3",
+    "sqlite3": "^3.1.8"
+  }
+}

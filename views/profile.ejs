@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Profile</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.0/css/bulma.min.css">
+  </head>
+  <body>
+    <center>
+      <section class="section">
+      <div class="container">
+    <h1 class="title"><strong>Profiles</strong></h1>
+    <h2>
+        <table class="table">
+          <tr>
+            <th>ID</th>
+            <th>Street</th>
+            <th>City</th>
+            <th>Zip Code</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+          <%var i = 1%>
+          <%dataP.forEach(d => {%>
+            <tr>
+            <td><%=i%><%i+=1%></td>
+            <td><%=d.street%></td>
+            <td><%=d.city%></td>
+            <td><%=d.zip_code%></td>
+            <td> <a href="/profiles/edit/<%=d.id%>">Edit</a> </td>
+            <td> <a href="/profiles/delete/<%=d.id%>">Delete</a> </td>
+          <%})%>
+          </tr>
+</table>
+    </h2>
+    <h3>Add Profile</h3>
+    <h4>
+      <form action="/profiles" method="post">
+          Street:<br>
+          <input type="text" name="street" placeholder="street"><br>
+          City:<br>
+          <input type="text" name="city" placeholder="city"> <br>
+          zip_code:<br>
+          <input type="text" name="zip_code" placeholder="zip Code"><br>
+          <br>
+          <button class="button is-primary" type="submit">Add</button>
+        </form>
+    </h4><br>
+    <a href="/">
+      <span class="icon">
+        <i class="fa fa-home">Home</i>
+    </span>
+    </a>
+  </div>
+  </section>
+  </center>
+  </body>
+</html>

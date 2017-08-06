@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Group</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.0/css/bulma.min.css">
+  </head>
+  <body>
+    <center>
+      <section class="section">
+      <div class="container">
+    <h1 class="title"><strong>Groups</strong></h1>
+    <h2>
+      <table class="table">
+          <tr>
+            <th>ID</th>
+            <th>Group Name</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+          <%var i =1%>
+          <%dataG.forEach(d => {%>
+            <tr>
+            <td><%=i%><%i+=1%></td>
+            <td><%=d.name_of_group%></td>
+            <td><a href="/groups/edit/<%=d.id%>">Edit</a></td>
+            <td><a href="/groups/delete/<%=d.id%>">Delete</a></td>
+          <%})%>
+          </tr>
+</table>
+    </h2>
+    <h3>Add Group</h3>
+    <h4>
+      <form action="/groups" method="post">
+          Name:<br>
+          <input type="text" name="group" placeholder="group name">
+          <br><br>
+          <button class="button is-primary" type="submit">Add</button>
+      </form>
+    </h4><br>
+    <a href="/">
+      <span class="icon">
+        <i class="fa fa-home">Home</i>
+    </span>
+    </a>
+    </div>
+    </section>
+  </center>
+  </body>
+</html>
