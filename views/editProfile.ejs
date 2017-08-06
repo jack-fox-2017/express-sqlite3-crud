@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h2>Silahkan ubah</h2>
+    <form action="/profile/edit/<%= data[0].id %>" method="post">
+      <input type="text" name="name" value="<%= data[0].name %>">
+      <input type="text" name="password" value="<%= data[0].password %>">
+      <button type="submit" name="submit">save</button>
+    </form>
+  </body>
+</html>

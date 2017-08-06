@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h2>Tampilan profile</h2>
+    <form class="" action="/profile" method="post">
+      <input type="text" name="name" placeholder="username">
+      <input type="password" name="password" placeholder="password">
+      <button type="submit" name="submit">tambah</button>
+    </form><br>
+    <table border="1">
+      <tr>
+        <th>ID</th>
+        <th>USERNAME</th>
+        <th>PASSWORD</th>
+        <th colspan="2">ACTION</th>
+      </tr>
+    <% data.forEach(d =>{ %>
+      <tr>
+        <td><%= d.id %></td>
+        <td><%= d.name%></td>
+        <td><%= d.password %></td>
+        <td>
+          <a href="/profile/edit/<%= d.id %>">Edit</a>
+        </td>
+        <td>
+          <a href="/profile/delete/<%= d.id %>">Delete</a>
+        </td>
+      </tr>
+    <% }) %>
+  </table><br>
+    <a href="/">INDEX</a>
+  </body>
+</html>

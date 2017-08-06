@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h2>Tampil address</h2>
+    <form action="/address" method="post">
+      <input type="text" name="street" placeholder="Name street">
+      <input type="text" name="city" placeholder="Name city">
+      <button type="submit" name="submit">tambah</button>
+    </form><br>
+    <table border="1">
+      <tr>
+        <th>ID</th>
+        <th>Name street</th>
+        <th>Name City</th>
+        <th colspan="2">Action</th>
+      </tr>
+      <% data.forEach(d=>{%>
+      <tr>
+        <td><%= d.id %></td>
+        <td><%= d.street %></td>
+        <td><%= d.city %></td>
+        <td>
+          <a href="/address/edit/<%= d.id %>">Edit</a>
+        </td>
+        <td>
+          <a href="/address/delete/<%= d.id %>">Delete</a>
+        </td>
+      </tr>
+      <% }) %>
+    </table><br>
+    <a href="/">HOME</a>
+  </body>
+</html>
