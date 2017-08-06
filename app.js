@@ -1,3 +1,40 @@
+/**
+/** EXPRESS CONTACTS-GROUPS
+---------------------------
+Buatlah sebuah aplikasi sederhana menggunakan Express JS dan SQLITE3 untuk
+menampilkan list Contact&Group, menambah data Contact&Group,
+melakukan edit data dan delete data berdasarkan data yang dipilih
+
+- Release 0
+1. Buatlah file dengan nama setup.js yang akan dijalankan pertama kali untuk membuat
+table pada database. Tentukan column mana saja yang akan di set unique.
+2. Berikan validasi di setiap create table sehingga meskipun setup dijalankan berulang
+kali, tidak error
+
+Structure table:
+* Contacts: id type integer, name type string, company type string, telp_number type string, email type string
+* Groups: id type integer, name_of_group type string
+
+- Release 1 - Basic Routing for Contacts dan Groups
+Buatlah sejumlah route berikut dan tampilkan melalui view engine ejs
+----------------------------------------------------------------------
+METHOD | ROUTE                | KETERANGAN
+----------------------------------------------------------------------
+GET    | /contacts            | Menampilkan semua data contacts
+POST   | /contacts            | Menerima data form untuk input contact
+GET    | /contacts/edit/:id   | Menampilkan data contact spesifik untuk diubah
+POST   | /contacts/edit/:id   | Menerima data form untuk update contact
+GET    | /contacts/delete/:id | Menghapus data contact berdasarkan id
+GET    | /groups              | Menampilkan semua data groups
+POST   | /groups              | Menerima data form untuk input group
+GET    | /groups/edit/:id     | Menampilkan data group spesifik untuk diubah
+POST   | /groups/edit/:id     | Menerima data form untuk update group
+GET    | /groups/delete/:id   | Menghapus data group berdasarkan id
+
+- Release 2
+  AKAN DIBERITAHUKAN SETELAH LECTURE SIANG
+**/
+
 const express = require('express');
 var app = express();
 var path = require('path');
@@ -26,7 +63,19 @@ app.get('/dbgroup', function(req, res){
   db.run('CREATE TABLE IF NOT EXISTS ContactGroup(id INTEGER primary key AUTOINCREMENT, GroupName TEXT)');
   res.send('Database Group telah di buat');
 });
+//create table Profiles
+app.get('/dbprofiles', function(req, res){
+  db.run('CREATE TABLE IF NOT EXISTS Profiles(id INTEGER primary key AUTOINCREMENT, Username TEXT, Password TEXT, Contact_Id INTEGER )');
+  res.send('Database Profiles telah di buat');
+});
+//create table address
+app.get('/dbaddress', function(req, res){
+  db.run('CREATE TABLE IF NOT EXISTS Address(id INTEGER primary key AUTOINCREMENT, street TEXT, City TEXT, zipcode INTEGER, contact_id INTEGER)');
+  res.send('Database Address telah di buat');
+})
 
+//---------------GAP-------------------//
+//-----------------------------------//
 //home page
 app.get('/home', function(req, res){
   res.render('home');
@@ -97,7 +146,79 @@ app.post('/group/edit/:id', function(req, res){
 app.get('/group/delete/:id', function(req, res){
   db.run(`DELETE FROM ContactGroup WHERE id = ${req.params.id}`);
   res.redirect('/group');
-})
+});
 
+//-----------------Profiles------------------//
+//-------------------GAP--------------------//
+//-----------------Profiles----------------//
+
+//show up profiles page
+app.get('/profile', function(req, res){
+  db.all('SELECT * FROM Profiles', function(err, data){
+    res.render('profile', {dataProfiles: data});
+  });
+});
+//go to form profile
+//nampilin dropdown data contact!!
+app.get('/profile/add/', function(req, res){
+  db.all(`SELECT * FROM Contact;`, function(err, data){
+  res.render('profileform', {contactData: data});
+  });
+});
+//submit data profile form
+app.post('/profile/add', function(req, res){
+  db.run(`INSERT INTO Profiles (Username, Password, Contact_Id) VALUES ('${req.body.username}', '${req.body.password}', '${req.body.contactID}')`);
+  res.redirect('/profile');
+});
+//go to profile edit form page
+app.get('/profile/edit/:id', function(req, res){
+  db.all(`SELECT * FROM Profiles WHERE id = '${req.params.id}'`, function(err, result){
+    db.all(`SELECT * FROM Contact`,  function(err, data){
+      res.render('profileedit', {dataProfile: result, dataContact: data});
+    });
+  });
+});
+// update profile
+app.post('/profile/edit/:id', function(req, res){
+  db.run(`UPDATE Profiles SET Username = '${req.body.username}', Password = '${req.body.password}', Contact_Id = '${req.body.ContactID}' WHERE id = ${req.params.id} `);
+  res.redirect('/profile');
+});
+//delete
+app.get('/profile/delete/:id', function(req, res){
+  db.run(`DELETE FROM Profiles WHERE id= ${req.params.id}`);
+  res.redirect('/profile');
+});
+//show profile + contacts detail
+app.get('/profile/detail/:id', function(req, res){
+  db.all(`SELECT Profiles.id, Profiles.Username, Profiles.Password, Contact.id,
+    Contact.Name, Contact.Company, Contact.Telp, Contact.Email
+    FROM Profiles JOIN Contact ON Profiles.Contact_Id = Contact.id
+    WHERE Profiles.id = ${req.params.id}`, function(err, data){
+    res.render('detailprof', {detailProf: data});
+    //console.log(data);
+  });
+});
+
+//---------------Address-------------------//
+//-----------------GAP-------------------//
+//---------------Address----------------//
+
+//show address page
+app.get('/address', function(req, res){
+  db.all(`SELECT * FROM Address`, function(err, alamat){
+  res.render('address', {dataAddress: alamat});
+});
+});
+// got to form addrees to add it
+app.get('/address/add', function(req, res){
+  db.all(`SELECT * FROM Contact;`, function(err, data){
+    res.render('addressform', {addressData: data});
+  });
+});
+//submit data address form
+app.post('/address/add', function(req, res){
+  db.run(`INSERT INTO Address (street, city, zipcode, contact_id) VALUES ('${req.body.street}', '${req.body.city}', '${req.body.zipcode}', ${req.body.contactID})`);
+  res.redirect('/address');
+})
 
 app.listen(3000);
