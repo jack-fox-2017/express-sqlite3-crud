@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Edit contact</title>
+  </head>
+  <body>
+    <h1>Edit Contact</h1>
+    <% let d = data[0] %>
+    <form action="/contacts/edit/<%= d.id %>" method="post">
+      <input type="text" name="name" placeholder="Name" value="<%= d.name %>"><br>
+      <input type="text" name="company" placeholder="Company" value="<%= d.company %>"><br>
+      <input type="text" name="telp_number" placeholder="Phone Number" value="<%= d.telp_number %>"><br>
+      <input type="text" name="email" placeholder="Email" value="<%= d.email %>"><br><br>
+      <input type="submit" value="Submit">
+    </form>
+  </body>
+</html>

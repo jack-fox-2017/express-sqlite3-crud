@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Edit address</title>
+  </head>
+  <body>
+    <h1>Edit address</h1>
+    <% let d = data[0] %>
+    <form action="/addresses/edit/<%= d.id %>" method="post">
+      <input type="text" name="street" placeholder="Street Address" value="<%= d.street %>"><br>
+      <input type="text" name="city" placeholder="City" value="<%= d.city %>"><br>
+      <input type="text" name="state" placeholder="State / Province" value="<%= d.state %>"><br>
+      <input type="text" name="country" placeholder="Country" value="<%= d.country %>"><br>
+      <input type="text" name="post_code" placeholder="Post Code" value="<%= d.post_code %>"><br><br>
+      <input type="submit" value="Submit">
+    </form>
+  </body>
+</html>
