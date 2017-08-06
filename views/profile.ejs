@@ -2,22 +2,18 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Profiles</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Profile</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.0/css/bulma.min.css">
   </head>
-  <style>
-        table, th, td {
-          border: 1px solid black;
-          border-collapse: collapse;
-        }
-        th, td {
-            padding: 5px;
-            text-align: left;
-        }
-  </style>
   <body>
-    <h1>===Profile===</h1>
+    <center>
+      <section class="section">
+      <div class="container">
+    <h1 class="title"><strong>Profiles</strong></h1>
     <h2>
-        <table style="width:50%">
+        <table class="table">
           <tr>
             <th>ID</th>
             <th>Street</th>
@@ -49,9 +45,16 @@
           zip_code:<br>
           <input type="text" name="zip_code" placeholder="zip Code"><br>
           <br>
-          <button type="submit">Add new profile</button>
+          <button class="button is-primary" type="submit">Add</button>
         </form>
-    </h4>
-    <a href="/">Home</a>
+    </h4><br>
+    <a href="/">
+      <span class="icon">
+        <i class="fa fa-home">Home</i>
+    </span>
+    </a>
+  </div>
+  </section>
+  </center>
   </body>
 </html>
