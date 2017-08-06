@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>address</title>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container">
+    <center>
+    <h1>Address</h1>
+    <div class="container">
+    <center>
+      <center>
+        <table class="table table-hover">
+          <tr>
+            <th>ID</th>
+            <th>Street</th>
+            <th>City</th>
+            <th>Zip Code Telp</th>
+            <th>Action</th>
+          </tr>
+          <% data.forEach(d => { %>
+            <tr>
+              <td><%=d.id%></td>
+              <td><%=d.street%></td>
+              <td><%=d.city%></td>
+              <td><%=d.zip_code%></td>
+              <td><a href="/address/edit/<%= d.id %>"><button type="button" class="btn btn-primary btn-sm" name="button">Edit</button></a>
+              <a href="address/delete/<%= d.id %>"><button type="button" class="btn btn-primary btn-sm" name="button">Delete</button></a>
+              </td>
+            </tr>
+          <%})%>
+        </table>
+      </center>
+    </div>
+    <center>
+      <form action="/address" method="post">
+        <div class="form-group">
+          <div class="container-fluid">
+          <label><b>Street</b></label>
+          <input type="text" class="form-control" name="street" placeholder="Input Your Street">
+          <label><b>City</b></label>
+          <input type="text" class="form-control" name="city" placeholder="Input Your City">
+          <label><b>Zip Code</b></label>
+          <input type="text" class="form-control" name="zip_code" placeholder="Input Your Zip Code">
+          <button type="submit" class="form-control" name="button">Submit</button>
+        </div>
+        </div>
+      </form>
+        <a class="btn btn-default" href="/" role="button">Home</a>
+    </center>
+  </div>
+  </body>
+</html>

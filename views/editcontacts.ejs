@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>edit contacts</title>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  </head>
+  <body>
+    <center>
+    <div class="container">
+    <h1>Edit Contacts</h1>
+      <form action="/contacts/edit/<%=data[0].id%>" method="post">
+        <div class="form-group">
+        <label><b>Name:</b></label>
+        <input type="text" class="form-control" name="name" value="<%= data[0].name%>">
+        <label><b>Company:</b></label>
+        <input type="text" class="form-control" name="company" value="<%= data[0].company%>">
+        <label><b>No. Telp</b></label>
+        <input type="text" class="form-control" name="telp_number" value="<%= data[0].telp_number%>">
+        <label><b>Email</b></label>
+        <input type="text" class="form-control" name="email" value="<%= data[0].email%>">
+        <button type="submit" class="form-control" name="button">Submit</button>
+      </div>
+      </form>
+        <a class="btn btn-default" href="/" role="button">Home</a>
+    </div>
+  </body>
+</html>
