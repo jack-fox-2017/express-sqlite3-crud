@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Profiles</title>
+  </head>
+  <body>
+    <table style="width:100%">
+ <tr>
+   <th>First Name</th>
+   <th>Last Name</th>
+ </tr>
+ <% profiles.forEach(data => { %>
+ <tr>
+   <td><%= data.first_name%></td>
+   <td><%= data.last_name%></td>
+   <td><a href="/profiles/editprofiles/<%=data.id%>">edit</a></td>
+   <td><a href="/profiles/delete/<%=data.id %>">delete</a></td>
+ </tr>
+ <% })%>
+</table>
+    <form action="/profiles" method="post">
+      First Name :<br>
+      <input type="text" name="first_name" placeholder="First Name">
+      <br>
+      Last Name :<br>
+      <input type="text" name="last_name" placeholder="Last Name">
+      <br>
+      <button type="submit" name="">submit</button>
+    </form>
+  </body>
+</html>

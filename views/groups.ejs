@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Groups</title>
+  </head>
+  <body>
+    <table style="width:100%">
+ <tr>
+   <th>Group Name</th>
+ </tr>
+ <% groups.forEach(data => { %>
+ <tr>
+   <td><%= data.name_of_group%></td>
+   <td><a href="/groups/editgroups/<%= data.id%>">edit</a></td>
+   <td><a href="/groups/delete/<%= data.id %>">delete</a></td>
+ </tr>
+ <% })%>
+</table>
+    <form action="/groups" method="post">
+      Name Group :<br>
+      <input type="text" name="name_of_group" placeholder="Groups Name">
+      <br>
+      <button type="submit" name="">submit</button>
+    </form>
+  </body>
+</html>
