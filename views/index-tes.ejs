@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>OGI...hello</h1>
+    <form class="" action="index.html" method="post">
+      <input type="text" name="" value="id"> placeholder="Input ID">
+      <input type="text" name="" value="kota"> placeholder="Input kota">
+      <input type="text" name="" value="province"> placeholder="Input province">
+      <input type="text" name="" value="gubernur"> placeholder="Input gubernur">
+      <button type="submit" name="button">save</button>
+    </form>
+<table border="1">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Kota</th>
+      <th>Province</th>
+      <th>Gubernur</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% data.forEach(d=> {%>
+    <tr>
+      <td><%= d.id %></td>
+      <td><%= d.kota %></td>
+      <td><%= d.province %></td>
+      <td><%= d.gubernur %></td>
+    </tr>
+    <%})%>
+  </tbody>
+  </table>
+  </body>
+</html>

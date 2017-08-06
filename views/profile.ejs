@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Profile</title>
+  </head>
+  <body>
+    <h1>Profiles Information</h1>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Usia</th>
+          <th>Pendidikan</th>
+          <th>Pengalaman</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%data.forEach(z=> { %>
+          <tr>
+            <td><%= z.id %></td>
+            <td><%= z.usia %></td>
+            <td><%= z.pendidikan %></td>
+            <td><%= z.pengalaman %></td>
+            <td><a href="/profile/edit/<%=z.id%>">Edit</a></td>
+            <td><a href="/profile/delete/<%=z.id%>">Delete</a></td>
+          </tr>
+        <% })%>
+      </tbody>
+    </table>
+    <br><br>
+    <form action="/profile" method="post">
+      <fieldset>
+        <input type="text" name="usia" placeholder="Input usia"><br>
+        <input type="text" name="pendidikan" placeholder="Input Pendidikan"><br>
+        <input type="text" name="pengalaman" placeholder="Input Pengalaman"><br>
+        <button type="submit">save</button>
+      </fieldset>
+    </form>
+    <br><br>
+    <a href="/">Home</a>
+  </body>
+</html>
