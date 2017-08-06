@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <table border="1">
+       <thead>
+        <tr>
+          <th><p style="font-size:15px">Id</p></th>
+          <th><p style="font-size:15px">name</p></th>
+          <th><p style="font-size:15px">company</p></th>
+          <th><p style="font-size:15px">telpon</p></th>
+          <th><p style="font-size:15px">email</p></th>
+        </tr>
+      </thead>
+      <tbody>
+          <% data.forEach(d=> {%>
+            <tr>
+              <td><p style="font-size:15px"><%= d.id %></p></td>
+              <td><p style="font-size:15px"><%= d.name %></p></td>
+              <td><p style="font-size:15px"><%= d.company %></p></td>
+              <td><p style="font-size:15px"><%= d.telp_number %></p></td>
+              <td><p style="font-size:15px"><%= d.email %></p></td>
+              <td><p style="font-size:15px"><a href="">Delete</a></p></td>
+              <td><p style="font-size:17px"><a href="">Edit</a></p></td>
+            </tr>
+          <%})%>
+      </tbody>
+    </table>
+
+    <br>
+    <br>
+    <form  action="/contacts" method="post">
+      <input type="number" name="id" placeholder="No"><br>
+      <input type="text" name="name" placeholder="Input nama"><br>
+      <input type="text" name="company" placeholder="Input perusahaan"><br>
+      <input type="text" name="telp_number" placeholder="Input Nomor Telp"><br>
+      <input type="email" name="email" placeholder="Input email"><br>
+      <button type="submit">Save</button>
+    </form>
+    <br>
+    <a href="/"><button type="link" name="button">Back to Index</button></a>
+    <br>
+
+
+  </body>
+</html>
