@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Addresses</title>
+  </head>
+  <body>
+    <h1>Addresses</h1>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>street</th>
+          <th>City</th>
+          <th>State</th>
+          <th>Country</th>
+          <th>Post Code</th>
+          <th colspan="2">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% data.forEach(d =>{ %>
+        <tr>
+          <td><%= d.id %></td>
+          <td><%= d.street %></td>
+          <td><%= d.city %></td>
+          <td><%= d.state %></td>
+          <td><%= d.country %></td>
+          <td><%= d.post_code %></td>
+          <td><a href="/addresses/edit/<%= d.id %>">Edit</a></td>
+          <td><a href="/addresses/del/<%= d.id %>">Delete</a></td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+    <br><br><br>
+    <form action="/addresses" method="post">
+      <input type="text" name="street" placeholder="Street Address"><br>
+      <input type="text" name="city" placeholder="City"><br>
+      <input type="text" name="state" placeholder="State / Province"><br>
+      <input type="text" name="country" placeholder="Country"><br>
+      <input type="text" name="post_code" placeholder="Post Code"><br><br>
+      <input type="submit" value="Submit">
+    </form>
+  </body>
+</html>

@@ -95,6 +95,76 @@ app.get('/groups/del/:id', (req, res)=>{
   res.redirect('/groups');
 });
 
+//addresses
+app.get('/addresses', (req,res)=>{
+  db.all(`SELECT * FROM ADDRESSES`, (err, rows) => {
+    if (err){
+      throw err
+    }
+    res.render('addresses', {data:rows})
+  });
+});
+
+app.post('/addresses', (req, res)=>{
+  db.run(`INSERT INTO ADDRESSES (street, city, state, country, post_code) VALUES
+  ('${req.body.street}','${req.body.city}','${req.body.state}','${req.body.country}', '${req.body.post_code}')`);
+  res.redirect('/addresses');
+});
+
+app.get('/addresses/edit/:id', (req, res)=>{
+  db.all(`SELECT * FROM ADDRESSES WHERE id=${req.params.id}`, (err,rows) =>{
+    if(err){
+      throw err;
+    }
+    res.render('edit-address',{data:rows});
+  });
+});
+
+app.post('/addresses/edit/:id', (req, res)=>{
+  db.run(`UPDATE ADDRESSES SET street='${req.body.street}', city='${req.body.city}', state='${req.body.state}', country='${req.body.country}', post_code='${req.body.post_code}' WHERE id=${req.params.id}`);
+  res.redirect('/addresses');
+});
+
+app.get('/addresses/del/:id', (req, res)=>{
+  db.run(`DELETE FROM ADDRESSES WHERE id=${req.params.id}`);
+  res.redirect('/addresses');
+});
+
+//profiles
+app.get('/profiles', (req,res)=>{
+  db.all(`SELECT * FROM PROFILES`, (err, rows) => {
+    if (err){
+      throw err
+    }
+    res.render('profiles', {data:rows})
+  });
+});
+
+app.post('/profiles', (req, res)=>{
+  db.run(`INSERT INTO PROFILES (date_of_birth, age, hobby) VALUES
+  ('${req.body.date_of_birth}','${req.body.age}','${req.body.hobby}')`);
+  res.redirect('/profiles');
+});
+
+app.get('/profiles/edit/:id', (req, res)=>{
+  db.all(`SELECT * FROM PROFILES WHERE id=${req.params.id}`, (err,rows) =>{
+    if(err){
+      throw err;
+    }
+    res.render('edit-profile',{data:rows});
+  });
+});
+
+app.post('/profiles/edit/:id', (req, res)=>{
+  db.run(`UPDATE PROFILES SET date_of_birth='${req.body.date_of_birth}', age='${req.body.age}', hobby='${req.body.hobby}' WHERE id=${req.params.id}`);
+  res.redirect('/profiles');
+});
+
+app.get('/profiles/del/:id', (req, res)=>{
+  db.run(`DELETE FROM PROFILES WHERE id=${req.params.id}`);
+  res.redirect('/profiles');
+});
+
 //listen to localhost:3000
 app.listen(3000, ()=>{
   console.log('listening on port 3000');

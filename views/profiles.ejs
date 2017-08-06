@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Profiles</title>
+  </head>
+  <body>
+    <h1>Profiles</h1>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Date of birth</th>
+          <th>Age</th>
+          <th>Hobby</th>
+          <th colspan="2">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% data.forEach(d =>{ %>
+        <tr>
+          <td><%= d.id %></td>
+          <td><%= d.date_of_birth %></td>
+          <td><%= d.age %></td>
+          <td><%= d.hobby %></td>\
+          <td><a href="/profiles/edit/<%= d.id %>">Edit</a></td>
+          <td><a href="/profiles/del/<%= d.id %>">Delete</a></td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+    <br><br><br>
+    <form action="/profiles" method="post">
+      <input type="text" name="date_of_birth" placeholder="Date of birth (dd/mm/YYYY)"><br>
+      <input type="text" name="age" placeholder="Age"><br>
+      <input type="text" name="hobby" placeholder="Hobby"><br><br>
+      <input type="submit" value="Submit">
+    </form>
+  </body>
+</html>

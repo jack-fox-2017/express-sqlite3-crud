@@ -7,8 +7,8 @@ function createTbContacts(){
     err => {
       if(err){
         throw err;
-        console.log('table contacts created!');
       }
+      console.log('table contacts created!');
   });
 }
 
@@ -18,10 +18,34 @@ function createTbGroups(){
     err =>{
       if(err){
         throw err;
-        console.log('table groups created!');
       }
+      console.log('table groups created!');
+  });
+}
+
+function createTbAddress(){
+  db.run(`CREATE TABLE IF NOT EXISTS ADDRESSES
+    (id INTEGER PRIMARY KEY AUTOINCREMENT, street VARCHAR(50), city VARCHAR(25), state VARCHAR(25), country VARCHAR(25), post_code VARCHAR(7))`,
+    err =>{
+      if(err){
+        throw err;
+      }
+      console.log('table addresses created!');
+  });
+}
+
+function createTbProfiles(){
+  db.run(`CREATE TABLE IF NOT EXISTS PROFILES
+    (id INTEGER PRIMARY KEY AUTOINCREMENT, date_of_birth VARCHAR(10), age VARCHAR(3), hobby VARCHAR(50))`,
+    err=>{
+      if(err){
+        throw err;
+      }
+      console.log('table profiles created!');
   });
 }
 
 createTbContacts();
 createTbGroups();
+createTbAddress();
+createTbProfiles();

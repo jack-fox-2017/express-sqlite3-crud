@@ -20,11 +20,11 @@
       <tbody>
         <% data.forEach(d =>{ %>
         <tr>
-          <td><%= d.id %></th>
-          <td><%= d.name %></th>
-          <td><%= d.company %></th>
-          <td><%= d.telp_number %></th>
-          <td><%= d.email %></th>
+          <td><%= d.id %></td>
+          <td><%= d.name %></td>
+          <td><%= d.company %></td>
+          <td><%= d.telp_number %></td>
+          <td><%= d.email %></td>
           <td><a href="/contacts/edit/<%= d.id %>">Edit</a></td>
           <td><a href="/contacts/del/<%= d.id %>">Delete</a></td>
         </tr>
