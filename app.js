@@ -12,23 +12,16 @@ app.use(express.static(__dirname + '/public'));
 
 app.set('view engine', 'ejs');
 
-// ========================================================
-// HOME
-
-app.get('/', function(req, res){
-  res.render('index');
-})
-
-// ========================================================
-// CONTACTS
-
+let index = require('./routers/index');
 let contacts = require('./routers/contact');
-app.use('/contacts', contacts);
 let groups = require('./routers/group');
-app.use('/groups', groups);
 let addresses = require('./routers/address');
-app.use('/addresses', addresses);
 let profiles = require('./routers/profile');
+
+app.use('/', index);
+app.use('/contacts', contacts);
+app.use('/groups', groups);
+app.use('/addresses', addresses);
 app.use('/profiles', profiles);
 
 app.listen(3000);
