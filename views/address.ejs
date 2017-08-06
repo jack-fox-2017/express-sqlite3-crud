@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<body>
+  <h1>ADDRESS</h1>
+  <table border="1">
+    <tr>
+      <th>No</th>
+      <th>address</th>
+      <th>city</th>
+      <th>province</th>
+      <th>postcode</th>
+    </tr>
+    <% data.forEach (d =>{%>
+      <tr>
+        <td>
+          <%= d.no %>
+        </td>
+        <td>
+          <%= d.address %>
+        </td>
+        <td>
+          <%= d.city %>
+        </td>
+        <td>
+          <%= d.province %>
+        </td>
+        <td>
+          <%= d.postcode %>
+        </td>
+        <td><a href="/address/edit/<%= d.no %>"><button type="button" name="button">Edit</button></a></td>
+        <td><a href="/address/delete/<%= d.no %>"><button type="button" name="button">Delete</button></a></td>
+      </tr>
+      <% }) %>
+  </table>
+  <br>
+  <left>
+    <form action="/address" method="post">
+      <label><b>address<b></label>
+      <input type="text" name="address" placeholder="please input your address">
+      <br>
+      <label><b>city<b></label>
+      <input type="text" name="city" placeholder="company city">
+      <br>
+      <label><b>province<b></label>
+      <input type="text" name="province" placeholder="please input your Province">
+      <br>
+      <label><b>post code<b></label>
+      <input type="text" name="postcode" placeholder="please input your postcode">
+      <br>
+      <button type="submit" name="submit">Submit </button>
+    </form><br>
+  </left>
+  <br>
+  <a href="/">back to home</a>
+</body>
+</html>

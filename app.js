@@ -99,6 +99,90 @@ app.get('/group/delete/:no', function(req,res){
   res.redirect('/group')
 })
 
+
+//address
+
+app.get ('/address', function (req, res) {
+  db.all(`select * from address`, function (err, data) {
+    if (!err) {
+      res.render('address', {
+        data: data
+      })
+    }
+  })
+})
+
+app.post('/address', function(req, res) {
+  db.run(`INSERT INTO address(address, city,province,postcode)VALUES("${req.body.address}","${req.body.city}","${req.body.province}","${req.body.postcode}")`)
+  res.redirect('/address')
+})
+
+//edit
+
+app.get("/address/edit/:no", function(req,res){
+  db.all(`SELECT * FROM address WHERE no = '${req.params.no}'`, function(err,rows){
+    if(!err){
+      res.render("editaddress",{
+        data:rows
+      })
+    }
+  })
+})
+
+app.post('/address/edit/:no', function(req,res){
+  db.run(`UPDATE address SET address = "${req.body.address}",city = "${req.body.city}",province = "${req.body.province}", postcode = "${req.body.postcode}" WHERE no = ${req.params.no}`)
+  res.redirect('/address')
+})
+
+// delete
+
+app.get('/address/delete/:no', function(req,res){
+  db.run(`DELETE FROM address WHERE no = '${req.params.no}'`)
+  res.redirect('/address')
+})
+
+
+//profile
+
+app.get ('/profile', function (req, res) {
+  db.all(`select * from profiles`, function (err, data) {
+    if (!err) {
+      res.render('profile', {
+        data: data
+      })
+    }
+  })
+})
+
+app.post('/profile', function(req, res) {
+  db.run(`INSERT INTO profiles(username, password) VALUES("${req.body.username}","${req.body.password}")`)
+  res.redirect('/profile')
+})
+
+// edit
+
+app.get("/profile/edit/:no", function(req,res){
+  db.all(`SELECT * FROM profiles WHERE no = '${req.params.no}'`, function(err,rows){
+    if(!err){
+      res.render("editprofile",{
+        data:rows
+      })
+    }
+  })
+})
+
+app.post('/profile/edit/:no', function(req,res){
+  db.run(`UPDATE profiles SET username = "${req.body.username}", password = "${req.body.password}" WHERE no = ${req.params.no}`)
+  res.redirect('/profile')
+})
+
+//delete
+
+app.get('/profile/delete/:no', function(req,res){
+  db.run(`DELETE FROM profiles WHERE no = '${req.params.no}'`)
+  res.redirect('/profile')
+})
+
 app.listen(3000, function() {
   console.log("sudah jalan di port 3000")
 })

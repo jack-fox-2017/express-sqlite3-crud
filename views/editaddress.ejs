@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Edit address</title>
+  </head>
+  <body>
+    <h1>EDIT address<h1>
+      <form action="/address/edit/<%=data[0].no%>" method="post">
+          <label><b>address<b></label>
+          <input type="text" name="address" value="<%= data[0].address%>">
+          <label><b>city<b></label>
+          <input type="text" name="city" value="<%= data[0].city%>">
+          <label><b>province<b></label>
+          <input type="text" name="province" value="<%= data[0].province%>">
+          <label><b>postcode<b></label>
+           <input type="text" name="postcode" value="<%= data[0].postcode%>">
+        <button type="submit" name="submit">update</button>
+      </form>
+      <a href="/address">cancel</a>
+  </body>
+</html>

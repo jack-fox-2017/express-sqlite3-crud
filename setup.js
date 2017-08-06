@@ -12,12 +12,26 @@ function createGroup(){
   console.log("data berhasil masuk ke tabel")
 }
 
+function createAddrees(){
+  db.run(`CREATE TABLE IF NOT EXISTS address(no INTEGER PRIMARY KEY AUTOINCREMENT, address text, city text, province text, postcode INT)`)
+  console.log("data berhasil masuk ke tabel")
+}
+
+function createProfile(){
+  db.run(`CREATE TABLE IF NOT EXISTS profiles(no INTEGER PRIMARY KEY AUTOINCREMENT, username text, password text)`)
+  console.log("data berhasil masuk ke tabel")
+}
+
+
 function insert(){
   db.run(`INSERT INTO groups (namegroup) VALUES("dimas")`)
   console.log("masuk");
 }
 
 
+
 // createContac()
 //createGroup()
 //insert()
+//createAddrees()
+//createProfile()
