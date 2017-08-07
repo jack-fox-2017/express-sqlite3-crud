@@ -44,18 +44,21 @@
         <th>Company</th>
         <th>Telp Number</th>
         <th>E-mail</th>
+        <th>Groups</th>
         <th>Action</th>
       </td>
       <% for(var i = 0; i < data.length; i++) { %>
       <tr>
-        <td><%= data[i].id %></td>
-        <td><%= data[i].name %></td>
+        <td><%= data[i].contact_id %></td>
+        <td><%= data[i].contact_name %></td>
         <td><%= data[i].company%></td>
         <td><%= data[i].telp_number%></td>
         <td><%= data[i].email%></td>
-        <td><a class = 'button_2' href='contacts/edit/<%= data[i].id %>'>Edit </a>||
-            <a class = 'button_2' href='contacts/delete/<%= data[i].id %>'>Delete </a>||
-            <a class = 'button_2' href='contacts/address/<%= data[i].id %>'>Address </a>
+        <td><%= data[i].group_names%></td>
+        <td><a class = 'button_2' href='contacts/group/<%= data[i].contact_id %>'>Assign Groups </a>||
+            <a class = 'button_2' href='contacts/edit/<%= data[i].contact_id %>'>Edit </a>||
+            <a class = 'button_2' href='contacts/delete/<%= data[i].contact_id %>'>Delete </a>||
+            <a class = 'button_2' href='contacts/address/<%= data[i].contact_id %>'>Address </a>
         </td>
       </tr>
       <%  }  %>
@@ -69,6 +72,11 @@
       <input type="text" name='company' placeholder="company">
       <input type="text" name='telp_number' placeholder="telp_number">
       <input type="text" name='email' placeholder="email">
+      <select name="groups_id">
+      <% data_group.forEach( cont => {%>
+        <option value="<%= cont.id%>"><%= cont.name_of_group%></option>
+      <%})%>
+      </select>
       <button class = 'button_3' type="submit">Submit</button>
     </form>
 

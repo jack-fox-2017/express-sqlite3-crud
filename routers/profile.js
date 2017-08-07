@@ -6,36 +6,80 @@ const express = require('express');
 const app = express.Router();
 
 app.get('/', function(req, res){
-  db.all(`SELECT * FROM Profiles`, function (err, rows) {
-    if(!err) {
-      res.render('profile', {data: rows});
-    }
+  db.all(`SELECT Profiles.id AS id,
+    username,
+    password,
+    contacts_id,
+    name
+    FROM Profiles
+    JOIN Contacts ON  Profiles.contacts_id = Contacts.id`, function (err, rows) {
+        db.all(`SELECT * FROM Contacts`, function (err, rows2) {
+          if(!err) {
+            res.render('profile', {data : rows, data_contact: rows2, message:'aaaa'});
+          }
+        });
   })
 });
 
 app.post('/', function(req,res) {
   db.run(`INSERT INTO Profiles (
     username,
-    password
-  ) VALUES ('${req.body.username}','${req.body.password}')`);
-  res.redirect('/profiles');
-})
+    password,
+    contacts_id
+  ) VALUES ('${req.body.username}','${req.body.password}', '${req.body.contacts_id}')`, function (errs, rows) {
+    if(!errs) {
+      res.redirect('/profiles');
+    } else {
+      db.all(`SELECT Profiles.id AS id,
+        username,
+        password,
+        contacts_id,
+        name
+        FROM Profiles
+        JOIN Contacts ON  Profiles.contacts_id = Contacts.id`, function (err, rows) {
+            db.all(`SELECT * FROM Contacts`, function (err, rows2) {
+                res.render('profile', {data : rows, data_contact: rows2, message:errs});
+            });
+          })
+      // console.log(err);
+    }
+  })
+});
 
 
 app.get('/edit/:id', function(req, res){
-  db.all(`SELECT * FROM Profiles WHERE id = ${req.params.id}`, function (err, rows) {
-    if(!err) {
-      res.render('profileEdit', {data: rows});
-    }
+  db.all(`SELECT Profiles.id AS id,
+    username,
+    password,
+    contacts_id,
+    name
+    FROM Profiles
+    JOIN Contacts ON  Profiles.contacts_id = Contacts.id
+    WHERE Profiles.id = ${req.params.id}`, function (err, rows) {
+      db.all(`SELECT * FROM Contacts`, function (err, rows2) {
+        if(!err) {
+          res.render('profileEdit', {data: rows, data_contact: rows2});
+        }
+      })
   })
 })
 
 app.post('/edit/:id', function(req, res){
   db.run(`UPDATE Profiles SET
     username = '${req.body.username}',
-    password = '${req.body.password}'
-    WHERE id = '${req.params.id}';`);
-  res.redirect('/profiles');
+    password = '${req.body.password}',
+    contacts_id = '${req.body.contacts_id}'
+    WHERE id = '${req.params.id}'`, function (err, rows) {
+      if(!err) {
+        res.redirect('/profiles');
+      } else {
+        // var error = 'contacts_id is taken'
+        // res.redirect('/profiles', {data: rows, errors : error});
+
+        // var error = 'contacts_id is taken'
+        res.redirect('/profiles');
+      }
+    });
 })
 
 app.get('/delete/:id', function(req, res){

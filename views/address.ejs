@@ -43,6 +43,11 @@
         <th>Street</th>
         <th>City</th>
         <th>ZIP code</th>
+        <th>Contact Name</th>
+        <th>Company</th>
+        <th>Telp Number</th>
+        <th>Email</th>
+        <th>Actions</th>
       </td>
       <% for(var i = 0; i < data.length; i++) { %>
       <tr>
@@ -50,6 +55,10 @@
         <td><%= data[i].street %></td>
         <td><%= data[i].city %></td>
         <td><%= data[i].zip_code %></td>
+        <td><%= data[i].name %></td>
+        <td><%= data[i].company %></td>
+        <td><%= data[i].telp_number %></td>
+        <td><%= data[i].email %></td>
         <td>
             <a class = 'button_2' href='addresses/edit/<%= data[i].id %>'>Edit </a>||
             <a class = 'button_2' href='addresses/delete/<%= data[i].id %>'>Delete </a>||
@@ -63,6 +72,11 @@
       <input type="text" name='street' placeholder="street name">
       <input type="text" name='city' placeholder="city name">
       <input type="text" name='zip_code' placeholder="ZIP code">
+      <select name="contacts_id">
+      <% data_contact.forEach( cont => {%>
+        <option value="<%= cont.id%>"><%= cont.name%></option>
+      <%})%>
+      </select>
       <button class = 'button_3' type="submit">Submit</button>
     </form>
 

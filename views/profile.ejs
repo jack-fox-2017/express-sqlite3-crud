@@ -42,12 +42,14 @@
         <th>Id</th>
         <th>Username</th>
         <th>Password</th>
+        <th>Contacts</th>
       </td>
       <% for(var i = 0; i < data.length; i++) { %>
       <tr>
         <td><%= data[i].id %></td>
         <td><%= data[i].username %></td>
         <td><%= data[i].password %></td>
+        <td><%= data[i].name %></td>
         <td><a class = 'button_2' href='profiles/edit/<%= data[i].id %>'>Edit </a>||
             <a class = 'button_2' href='profiles/delete/<%= data[i].id %>'>Delete </a>||
         </td>
@@ -59,7 +61,14 @@
     <form action="/profiles" method="post">
       <input type="text" name='username' placeholder="username">
       <input type="text" name='password' placeholder="password">
+      <select name="contacts_id">
+      <% data_contact.forEach( cont => {%>
+        <option value="<%= cont.id%>"><%= cont.name%></option>
+      <%})%>
+      </select>
       <button class = 'button_3' type="submit">Submit</button>
+      <br>
+      <%= message%>
     </form>
 
   </body>
