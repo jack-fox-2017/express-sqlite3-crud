@@ -15,7 +15,7 @@ app.get('/', function(req, res){
     JOIN Contacts ON  Profiles.contacts_id = Contacts.id`, function (err, rows) {
         db.all(`SELECT * FROM Contacts`, function (err, rows2) {
           if(!err) {
-            res.render('profile', {data : rows, data_contact: rows2, message:'aaaa'});
+            res.render('profile', {data : rows, data_contact: rows2, message:''});
           }
         });
   })
@@ -58,7 +58,7 @@ app.get('/edit/:id', function(req, res){
     WHERE Profiles.id = ${req.params.id}`, function (err, rows) {
       db.all(`SELECT * FROM Contacts`, function (err, rows2) {
         if(!err) {
-          res.render('profileEdit', {data: rows, data_contact: rows2});
+          res.render('profileEdit', {data: rows, data_contact: rows2, message:''});
         }
       })
   })
@@ -69,15 +69,26 @@ app.post('/edit/:id', function(req, res){
     username = '${req.body.username}',
     password = '${req.body.password}',
     contacts_id = '${req.body.contacts_id}'
-    WHERE id = '${req.params.id}'`, function (err, rows) {
-      if(!err) {
+    WHERE id = '${req.params.id}'`, function (errs, rows) {
+
+
+      if(!errs) {
         res.redirect('/profiles');
       } else {
-        // var error = 'contacts_id is taken'
-        // res.redirect('/profiles', {data: rows, errors : error});
-
-        // var error = 'contacts_id is taken'
-        res.redirect('/profiles');
+        db.all(`SELECT Profiles.id AS id,
+          username,
+          password,
+          contacts_id,
+          name
+          FROM Profiles
+          JOIN Contacts ON  Profiles.contacts_id = Contacts.id WHERE Profiles.id = ${req.params.id}`, function (err, rows) {
+              db.all(`SELECT * FROM Contacts`, function (err, rows2) {
+                  // console.log(rows);
+                  res.render('profileEdit', {data : rows, data_contact: rows2, message:errs});
+              });
+            })
+        // res.render('profileEdit', {data: arrTemp, message: errs})
+        // console.log(err);
       }
     });
 })

@@ -68,7 +68,9 @@
       </select>
       <button class = 'button_3' type="submit">Submit</button>
       <br>
-      <%= message%>
+      <% if(message != '') { %>
+        <%= `Error: Contact's id is already taken`%>
+      <%}%>
     </form>
 
   </body>
