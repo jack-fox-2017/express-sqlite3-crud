@@ -87,8 +87,6 @@ app.post('/edit/:id', function(req, res){
                   res.render('profileEdit', {data : rows, data_contact: rows2, message:errs});
               });
             })
-        // res.render('profileEdit', {data: arrTemp, message: errs})
-        // console.log(err);
       }
     });
 })

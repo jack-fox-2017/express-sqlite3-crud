@@ -45,12 +45,12 @@
       </td>
       <% for(var i = 0; i < data.length; i++) { %>
       <tr>
-        <td><%= data[i].group_id %></td>
-        <td><%= data[i].group_name %></td>
+        <td><%= data[i].id %></td>
+        <td><%= data[i].name_of_group %></td>
         <td><%= data[i].names %></td>
-        <td><a class = 'button_2' href='groups/contact/<%= data[i].group_id %>'>Assign Contacts </a>||
-            <a class = 'button_2' href='groups/edit/<%= data[i].group_id %>'>Edit </a>||
-            <a class = 'button_2' href='groups/delete/<%= data[i].group_id %>'>Delete </a>||
+        <td><a class = 'button_2' href='groups/contact/<%= data[i].id %>'>Assign Contacts </a>||
+            <a class = 'button_2' href='groups/edit/<%= data[i].id %>'>Edit </a>||
+            <a class = 'button_2' href='groups/delete/<%= data[i].id %>'>Delete </a>||
         </td>
       </tr>
       <%  }  %>
