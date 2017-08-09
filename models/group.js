@@ -5,57 +5,56 @@ class Groups {
 
   }
 
-   static manipulateGroups(conn, rows,cb) {
-     let hitung = 0;
-
-     rows.forEach(row =>{
-         conn.all(`SELECT groups_id, contacts_id, name FROM ContactGroups
-           JOIN Contacts
-           ON ContactGroups.contacts_id = Contacts.id
-           WHERE ContactGroups.groups_id = ${row.id}`,(err, data_contactsingroup) => {
-
-             if (!err && data_contactsingroup.length>0) {
-               // row['group_id'] = data_contactsingroup[0].group_id
-               console.log(data_contactsingroup);
-               console.log(JSON.stringify(row)+'this is row');
-               var arr=[]
-                 for (let i=0; i<data_contactsingroup.length; i++) {
-                   arr.push(data_contactsingroup[i].name);
-                 }
-               row['names']=arr;
-             }
-           hitung++;
-           if(hitung == rows.length) {
-             console.log(rows);
-             cb(rows);
-           }
-
-         }
-       )
-     })
-   }
- //  hello () {
- //   return 'hiiiiii';
- // }
-  static findAll(conn, cb) {
-    // console.log(this.hello());
-    var manipulate = this.manipulateGroups; //masalah scope this cuma bisa d dalem object gk bisa d dalem all
-    conn.all(`SELECT * FROM Groups`, function (err, dGroup) {
-      manipulate(conn, dGroup, cb);
-        // console.log(dataManipulated);
-        // res.render('group', {data: dataManipulated});
-      })
-    }
-
-  static findById(conn, id, cb) {
-    conn.all(`SELECT * FROM Groups WHERE id = ${id}`, function (err, rows) {
-      if(!err) {
-        cb(rows)
+  static joinConjunctionWithGroups(conn,row){
+    return new Promise(function(resolve, reject) {
+      var data_contactsingroup=[];
+      conn.each(`SELECT groups_id, contacts_id, name FROM ContactGroups
+        JOIN Contacts
+        ON ContactGroups.contacts_id = Contacts.id
+        WHERE ContactGroups.groups_id = ${row.id}`,(err, data_perObject) => {
+          data_contactsingroup.push(data_perObject);
+    }, function(err){
+      if(!err){
+        resolve(data_contactsingroup)
       } else {
-        cb(null)
+        reject(err);
       }
     })
-  }
+  })
+};
+
+
+  static findAll(conn) {
+    // console.log(this.hello());
+    return new Promise(function(resolve, reject) {
+      var temp = [];
+      // var manipulate = this.manipulateGroups; //masalah scope this cuma bisa d dalem object gk bisa d dalem all
+      conn.each(`SELECT * FROM Groups`, function (err, dGroup) {
+        temp.push(dGroup);
+        }, function (err){
+        if(!err){
+          resolve(temp)
+        } else {
+          reject(err);
+        }
+      })
+    });
+  };
+
+  static findById(conn, id) {
+    return new Promise(function(resolve, reject) {
+      var temp = [];
+      conn.each(`SELECT * FROM Groups WHERE id = ${id}`, function (err, rows) {
+        temp.push(rows);
+        }, function(err){
+          if(!err){
+            resolve(temp)
+          } else {
+            reject(err);
+          }
+      })
+    })
+  };
 
   static insertData(conn, data){
     conn.run(`INSERT INTO Groups (
@@ -79,24 +78,29 @@ class Groups {
       name_of_group = '${data.name_of_group}' WHERE id = ${id}`);
   }
 
-  static showContact(conn, cb){
-      conn.all(`SELECT * FROM Contacts`, function (err, rows2) {
-        if(!err) {
-          cb(rows2)
-        } else {
-          cb(null)
-        }
-      })
-  }
+  // static showContact(conn, cb){
+  //     conn.all(`SELECT * FROM Contacts`, function (err, rows2) {
+  //       if(!err) {
+  //         cb(rows2)
+  //       } else {
+  //         cb(null)
+  //       }
+  //     })
+  // }
 
-  static showGroup(conn, cb){
-      conn.all(`SELECT * FROM Groups`, function (err, rows2) {
-        if(!err) {
-          cb(false, rows2)
-        } else {
-          cb(true,null)
-        }
-      })
+  static showGroup(conn){
+    return new Promise(function(resolve, reject) {
+      var temp = [];
+        conn.each(`SELECT * FROM Groups`, function (err, rows2) {
+          temp.push(rows2);
+        }, function(err) {
+          if(!err){
+            resolve(temp)
+          } else {
+            reject(err);
+          }
+        })
+    });
   }
 
 
